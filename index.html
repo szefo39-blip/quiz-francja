@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bonjour France 🇫🇷</title>
+<title>Bonjour France 🇫🇷 | Dzień Języków Obcych 2026</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 * {
     box-sizing: border-box;
@@ -17,10 +16,10 @@
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", Arial, sans-serif;
     background:
-        radial-gradient(circle at 10% 10%, rgba(35, 67, 128, .12), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(210, 35, 42, .10), transparent 30%),
+        radial-gradient(circle at 10% 10%, rgba(35,67,128,.12), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(210,35,42,.10), transparent 30%),
         #f7f8fc;
     color: #111827;
     min-height: 100vh;
@@ -32,8 +31,7 @@ body {
 
 .navbar {
     width: 100%;
-    background: rgba(255,255,255,.88);
-    backdrop-filter: blur(18px);
+    background: rgba(255,255,255,.95);
     border-bottom: 1px solid #e5e7eb;
     position: sticky;
     top: 0;
@@ -43,10 +41,11 @@ body {
 .nav-inner {
     max-width: 1150px;
     margin: auto;
-    padding: 16px 22px;
+    padding: 15px 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .logo {
@@ -55,6 +54,7 @@ body {
     display: flex;
     align-items: center;
     gap: 9px;
+    white-space: nowrap;
 }
 
 .flag {
@@ -63,7 +63,6 @@ body {
     display: flex;
     overflow: hidden;
     border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0,0,0,.12);
 }
 
 .flag span {
@@ -84,16 +83,19 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 8px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .nav-links button {
     border: none;
     background: transparent;
-    padding: 9px 14px;
+    padding: 9px 12px;
     border-radius: 10px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 14px;
     color: #64748b;
     transition: .2s;
 }
@@ -111,23 +113,27 @@ body {
 .container {
     max-width: 1100px;
     margin: auto;
-    padding: 50px 22px 70px;
+    padding: 45px 22px 70px;
 }
 
+/* NAJWAŻNIEJSZE:
+   każda zakładka jest ukryta,
+   aktywna jest tylko jedna */
 .section {
-    display: none;
-    animation: fadeIn .35s ease;
+    display: none !important;
+    animation: fadeIn .3s ease;
 }
 
 .section.active {
-    display: block;
+    display: block !important;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -135,11 +141,34 @@ body {
 }
 
 /* =========================
-   HERO
+   START
 ========================= */
 
+.language-day {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 13px 18px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 8px 25px rgba(15,23,42,.05);
+}
+
+.language-day strong {
+    color: #1d4ed8;
+    font-size: 13px;
+}
+
+.language-day span {
+    color: #64748b;
+    font-size: 13px;
+}
+
 .hero {
-    min-height: 600px;
+    min-height: 570px;
     display: grid;
     grid-template-columns: 1.2fr .8fr;
     gap: 40px;
@@ -147,8 +176,7 @@ body {
 }
 
 .hero-text h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(48px, 7vw, 82px);
+    font-size: clamp(48px, 7vw, 80px);
     line-height: .98;
     margin-bottom: 25px;
 }
@@ -162,6 +190,15 @@ body {
     font-size: 18px;
     line-height: 1.7;
     max-width: 600px;
+}
+
+.hero-event {
+    margin-bottom: 18px;
+    color: #ef233c;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: .7px;
+    text-transform: uppercase;
 }
 
 .hero-buttons {
@@ -185,7 +222,6 @@ body {
 .primary-btn {
     background: #1d4ed8;
     color: white;
-    box-shadow: 0 10px 25px rgba(29,78,216,.25);
 }
 
 .primary-btn:hover {
@@ -212,20 +248,6 @@ body {
     border-radius: 30px;
     padding: 25px;
     box-shadow: 0 25px 70px rgba(15,23,42,.10);
-    position: relative;
-    overflow: hidden;
-}
-
-.france-card::before {
-    content: "";
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    background: #ef233c;
-    opacity: .08;
-    border-radius: 50%;
-    right: -60px;
-    top: -60px;
 }
 
 .big-flag {
@@ -253,12 +275,33 @@ body {
 }
 
 /* =========================
-   INFO CARDS
+   EVENT
+========================= */
+
+.event-card {
+    background: linear-gradient(135deg,#eff6ff,#fff);
+    border: 1px solid #dbeafe;
+    border-radius: 22px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.event-card h3 {
+    margin-bottom: 8px;
+    font-size: 21px;
+}
+
+.event-card p {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+/* =========================
+   COMMON
 ========================= */
 
 .page-title {
-    font-family: "Playfair Display", serif;
-    font-size: 48px;
+    font-size: 42px;
     margin-bottom: 12px;
 }
 
@@ -266,39 +309,7 @@ body {
     color: #64748b;
     margin-bottom: 35px;
     font-size: 17px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.info-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
-    padding: 25px;
-    transition: .25s;
-}
-
-.info-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(15,23,42,.08);
-}
-
-.info-icon {
-    font-size: 30px;
-    margin-bottom: 15px;
-}
-
-.info-card h3 {
-    margin-bottom: 9px;
-}
-
-.info-card p {
-    color: #64748b;
-    line-height: 1.65;
+    line-height: 1.6;
 }
 
 /* =========================
@@ -333,7 +344,7 @@ body {
 .progress-bar {
     height: 100%;
     width: 4%;
-    background: linear-gradient(90deg, #1d4ed8, #ef233c);
+    background: linear-gradient(90deg,#1d4ed8,#ef233c);
     transition: width .35s;
 }
 
@@ -372,7 +383,6 @@ body {
 .answer:hover {
     border-color: #1d4ed8;
     background: #f8faff;
-    transform: translateX(3px);
 }
 
 .answer.selected {
@@ -390,20 +400,10 @@ body {
     color: white;
     font-weight: 700;
     cursor: pointer;
-    transition: .2s;
-}
-
-.next-btn:hover {
-    background: #1d4ed8;
-}
-
-.next-btn:disabled {
-    opacity: .4;
-    cursor: not-allowed;
 }
 
 /* =========================
-   START
+   START QUIZU
 ========================= */
 
 .start-card {
@@ -416,8 +416,7 @@ body {
 }
 
 .start-card h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 36px;
+    font-size: 34px;
     margin-bottom: 10px;
 }
 
@@ -432,13 +431,12 @@ body {
     margin-bottom: 12px;
     border-radius: 12px;
     border: 1px solid #d1d5db;
-    font-size: 15px;
+    font-size: 16px;
     outline: none;
 }
 
 .input:focus {
     border-color: #1d4ed8;
-    box-shadow: 0 0 0 4px rgba(29,78,216,.08);
 }
 
 /* =========================
@@ -461,8 +459,7 @@ body {
 }
 
 .result-card h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 42px;
+    font-size: 40px;
 }
 
 .score {
@@ -478,26 +475,533 @@ body {
 }
 
 /* =========================
-   FACTS
+   RANKING
 ========================= */
 
-.fact {
+.ranking-card {
+    max-width: 800px;
+    margin: auto;
     background: white;
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 14px;
     border: 1px solid #e5e7eb;
+    border-radius: 25px;
+    overflow: hidden;
 }
 
-.fact strong {
-    display: block;
-    margin-bottom: 7px;
-    font-size: 18px;
+.ranking-header,
+.ranking-row {
+    display: grid;
+    grid-template-columns: 70px 1fr 120px;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 25px;
 }
 
-.fact p {
+.ranking-header {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.ranking-row {
+    border-top: 1px solid #e5e7eb;
+    font-weight: 600;
+}
+
+.ranking-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ranking-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #eef2ff;
+    color: #1d4ed8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.ranking-score {
+    text-align: right;
+    font-weight: 800;
+    color: #1d4ed8;
+}
+
+.empty-ranking {
+    padding: 35px 25px;
+    text-align: center;
+    color: #64748b;
+}
+
+/* =========================
+   GRY
+========================= */
+
+.games-wrap {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.games-hero {
+    background: linear-gradient(135deg,#f8fafc,#fff);
+    border: 1px solid #e5e7eb;
+    border-radius: 26px;
+    padding: 42px 34px;
+    margin-bottom: 28px;
+}
+
+.games-kicker {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #1d4ed8;
+}
+
+.games-hero h2 {
+    font-size: 42px;
+    margin: 8px 0 10px;
+}
+
+.games-hero p {
+    max-width: 700px;
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+.game-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 22px;
+}
+
+.game-choice {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 12px 30px rgba(15,23,42,.06);
+}
+
+.game-choice-icon {
+    font-size: 54px;
+    margin-bottom: 12px;
+}
+
+.game-choice h3 {
+    font-size: 25px;
+    margin-bottom: 9px;
+}
+
+.game-choice p {
     color: #64748b;
     line-height: 1.6;
+    min-height: 52px;
+}
+
+.game-label {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    font-size: 11px;
+    font-weight: 900;
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+.game-panel {
+    max-width: 820px;
+    margin: 26px auto 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 26px;
+    padding: 30px;
+}
+
+.game-back {
+    border: 0;
+    background: #f8fafc;
+    color: #475569;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-bottom: 18px;
+}
+
+.game-topline {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 900;
+    color: #475569;
+    margin-bottom: 13px;
+}
+
+.game-topline span:last-child {
+    color: #1d4ed8;
+}
+
+.game-progress-track {
+    height: 9px;
+    background: #eef2f7;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.game-progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg,#1d4ed8 0 33%,#fff 33% 66%,#ef233c 66%);
+    transition: width .3s;
+}
+
+.game-question-card {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.game-word {
+    font-size: 34px;
+    font-weight: 900;
+}
+
+.answers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.game-answer {
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.game-answer.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    color: #166534;
+}
+
+.game-answer.wrong {
+    border-color: #ef4444;
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+.game-feedback {
+    min-height: 28px;
+    text-align: center;
+    font-weight: 900;
+    margin: 15px 0 7px;
+}
+
+.game-loading {
+    display: none;
+    margin-top: 13px;
+}
+
+.game-loading-text {
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.game-loading-track {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.game-loading-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg,#1d4ed8,#fff,#ef233c);
+}
+
+.game-result {
+    text-align: center;
+    padding: 28px 10px;
+}
+
+.game-result .result-big {
+    font-size: 38px;
+    font-weight: 900;
+    margin: 8px 0;
+}
+
+/* =========================
+   O FRANCJI
+========================= */
+
+.france-reading .page-subtitle {
+    max-width: 850px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.category-card {
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 18px;
+    padding: 24px;
+    text-align: left;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 8px 25px rgba(0,0,0,.06);
+    font: inherit;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,.11);
+}
+
+.category-card span {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.category-card strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.category-card small {
+    display: block;
+    line-height: 1.5;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.category-content {
+    margin: 30px 0 10px;
+    padding: 30px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,.07);
+    border-left: 5px solid #1b4fa3;
+}
+
+.category-content h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.category-content h4 {
+    font-size: 19px;
+    margin-bottom: 7px;
+    margin-top: 24px;
+}
+
+.category-content p {
+    line-height: 1.7;
+    margin: 8px 0;
+}
+
+.category-back {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: 20px;
+    background: #eef2ff;
+    color: #1d4ed8;
+}
+
+/* =========================
+   CIEKAWOSTKI
+========================= */
+
+.facts-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.random-fact-card,
+.facts-info-box {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 30px;
+}
+
+.random-fact-card {
+    text-align: center;
+}
+
+.random-fact-badge {
+    font-size: 12px;
+    font-weight: 900;
+    color: #1d4ed8;
+    letter-spacing: 1px;
+}
+
+.random-fact-icon {
+    font-size: 50px;
+    margin: 15px;
+}
+
+.random-fact-card h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.random-fact-card p {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.random-fact-category {
+    margin: 15px 0;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.random-fact-button {
+    border: none;
+    background: #1d4ed8;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.facts-info-box p {
+    color: #64748b;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.fact-count {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 800;
+    color: #1d4ed8;
+}
+
+/* =========================
+   O STRONIE
+========================= */
+
+.about-app {
+    max-width: 850px;
+    margin: auto;
+}
+
+.about-hero {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 28px;
+    padding: 42px;
+    box-shadow: 0 20px 60px rgba(15,23,42,.08);
+}
+
+.about-badge {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-radius: 999px;
+    padding: 8px 13px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.about-hero h2 {
+    font-size: 48px;
+    margin-bottom: 14px;
+}
+
+.about-hero h2 span {
+    color: #1d4ed8;
+}
+
+.about-lead {
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.about-box {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.about-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.about-box h3 {
+    margin-bottom: 8px;
+    font-size: 19px;
+}
+
+.about-box p {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.about-author {
+    margin-top: 18px;
+    text-align: center;
+    background: linear-gradient(135deg,#eff6ff,#fff,#fff1f2);
+    border: 1px solid #dbeafe;
+    border-radius: 22px;
+    padding: 25px;
+}
+
+.about-author strong {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.about-author span {
+    color: #64748b;
 }
 
 /* =========================
@@ -515,11 +1019,18 @@ footer {
    MOBILE
 ========================= */
 
-@media (max-width: 800px) {
+@media(max-width:850px) {
+
+    .nav-inner {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
 
     .hero {
         grid-template-columns: 1fr;
-        min-height: auto;
     }
 
     .hero-text {
@@ -534,42 +1045,47 @@ footer {
         justify-content: center;
     }
 
-    .cards {
+    .category-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .facts-layout {
         grid-template-columns: 1fr;
     }
 
-    .nav-inner {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .nav-links {
-        width: 100%;
-        justify-content: center;
-        overflow-x: auto;
-    }
-
-    .nav-links button {
-        white-space: nowrap;
-    }
-
-    .big-flag {
-        height: 210px;
-    }
-
-    .quiz-card {
-        padding: 23px;
-    }
-
-    .question {
-        font-size: 23px;
-    }
-
-    .page-title {
-        font-size: 38px;
+    .game-choice-grid {
+        grid-template-columns: 1fr;
     }
 }
 
+@media(max-width:600px) {
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .answers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ranking-header,
+    .ranking-row {
+        grid-template-columns: 45px 1fr 80px;
+        padding: 15px;
+    }
+
+    .page-title {
+        font-size: 34px;
+    }
+
+    .hero-text h1 {
+        font-size: 50px;
+    }
+}
 </style>
 </head>
 
@@ -580,106 +1096,335 @@ footer {
 ========================= -->
 
 <nav class="navbar">
-
 <div class="nav-inner">
 
-<div class="logo">
+    <div class="logo">
+        <div class="flag">
+            <span class="blue"></span>
+            <span class="white"></span>
+            <span class="red"></span>
+        </div>
+        Bonjour France
+    </div>
 
-<div class="flag">
-<span class="blue"></span>
-<span class="white"></span>
-<span class="red"></span>
+    <div class="nav-links">
+
+        <button class="active" onclick="showSection('start',this)">
+            Start
+        </button>
+
+        <button onclick="showSection('games',this)">
+            Gry
+        </button>
+
+        <button onclick="showSection('quiz',this)">
+            Quiz
+        </button>
+
+        <button onclick="showSection('ranking',this)">
+            Ranking
+        </button>
+
+        <button onclick="showSection('info',this)">
+            O Francji
+        </button>
+
+        <button onclick="showSection('facts',this)">
+            Ciekawostki
+        </button>
+
+        <button onclick="showSection('about',this)">
+            O stronie
+        </button>
+
+    </div>
 </div>
-
-Bonjour France
-
-</div>
-
-<div class="nav-links">
-
-<button class="active" onclick="showSection('home', this)">
-Start
-</button>
-
-<button onclick="showSection('quiz', this)">
-Quiz
-</button>
-
-<button onclick="showSection('info', this)">
-O Francji
-</button>
-
-<button onclick="showSection('facts', this)">
-Ciekawostki
-</button>
-
-</div>
-
-</div>
-
 </nav>
 
 
 <main class="container">
 
-
 <!-- =========================
-     HOME
+     START
 ========================= -->
 
-<section id="home" class="section active">
+<section id="start" class="section active">
 
-<div class="hero">
+    <div class="language-day">
+        <strong>🇫🇷 DZIEŃ JĘZYKÓW OBCYCH 2026</strong>
+        <span>Bonjour France</span>
+    </div>
 
-<div class="hero-text">
+    <div class="hero">
 
-<h1>
-Bonjour,<br>
-<span>France!</span>
-</h1>
+        <div class="hero-text">
 
-<p>
-Sprawdź swoją wiedzę o jednym z najbardziej fascynujących
-krajów Europy. Historia, geografia, kultura i ciekawostki
-czekają na Ciebie w 25 pytaniach.
-</p>
+            <div class="hero-event">
+                PROJEKT EDUKACYJNY • 2026
+            </div>
 
-<div class="hero-buttons">
+            <h1>
+                Bonjour,<br>
+                <span>France!</span>
+            </h1>
 
-<button class="primary-btn"
-onclick="showSection('quiz')">
-🇫🇷 Rozpocznij quiz
-</button>
+            <p>
+                Poznaj Francję, jej kulturę, historię, język
+                i ciekawostki. Zagraj w quiz, sprawdź swoją
+                wiedzę i odkrywaj Francję krok po kroku.
+            </p>
 
-<button class="secondary-btn"
-onclick="showSection('info')">
-Poznaj Francję
-</button>
+            <div class="hero-buttons">
 
-</div>
+                <button class="primary-btn"
+                        onclick="showSectionById('quiz')">
+                    Rozpocznij quiz →
+                </button>
 
-</div>
+                <button class="secondary-btn"
+                        onclick="showSectionById('info')">
+                    Poznaj Francję
+                </button>
+
+            </div>
+
+        </div>
 
 
-<div class="france-card">
+        <div class="france-card">
 
-<div class="big-flag">
-<div class="blue"></div>
-<div class="white"></div>
-<div class="red"></div>
-</div>
+            <div class="big-flag">
+                <div class="blue"></div>
+                <div class="white"></div>
+                <div class="red"></div>
+            </div>
 
-<div class="card-bottom">
+            <div class="card-bottom">
+                <h3>République française</h3>
+            </div>
 
-<h3>La France</h3>
+        </div>
 
-<p>
-Kraj sztuki, historii, mody, kuchni i niezwykłych krajobrazów.
-</p>
+    </div>
 
-</div>
 
-</div>
+    <div class="event-card">
+
+        <h3>🇫🇷 Dzień Języków Obcych</h3>
+
+        <p>
+            Strona została przygotowana specjalnie na szkolny
+            Dzień Języków Obcych 2026. Jej tematem przewodnim
+            jest Francja i język francuski.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GRY
+========================= -->
+
+<section id="games" class="section">
+
+<div class="games-wrap">
+
+    <div class="games-hero">
+
+        <div class="games-kicker">
+            JEUX • BONJOUR FRANCE
+        </div>
+
+        <h2>Francuski kącik gier 🇫🇷</h2>
+
+        <p>
+            Wybierz jedną z dwóch krótkich gier.
+            Po zaznaczeniu odpowiedzi zobaczysz wynik,
+            a po 3 sekundach automatycznie pojawi się
+            kolejne pytanie.
+        </p>
+
+    </div>
+
+
+    <div id="gamesMenu" class="game-choice-grid">
+
+        <div class="game-choice">
+
+            <div class="game-choice-icon">🥐</div>
+
+            <span class="game-label">
+                SŁÓWKA • 15 PYTAŃ
+            </span>
+
+            <h3>Francuski → Polski</h3>
+
+            <p>
+                Sprawdź znajomość podstawowych
+                francuskich słów i zwrotów.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="startWordsGame()">
+                ZAGRAJ →
+            </button>
+
+        </div>
+
+
+        <div class="game-choice">
+
+            <div class="game-choice-icon">🗼</div>
+
+            <span class="game-label">
+                FRANCJA • 15 PYTAŃ
+            </span>
+
+            <h3>Francja — szybki test</h3>
+
+            <p>
+                Odpowiadaj na pytania o Paryż,
+                symbole, kulturę i Francję.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="startFranceGame()">
+                ZAGRAJ →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div id="wordsGame"
+         class="game-panel"
+         style="display:none">
+
+        <button class="game-back"
+                onclick="backToGames()">
+            ← Wróć do wyboru gier
+        </button>
+
+        <div class="game-topline">
+            <span id="wordsProgress">1 / 15</span>
+            <span id="wordsScore">Punkty: 0</span>
+        </div>
+
+        <div class="game-progress-track">
+            <div id="wordsProgressBar"
+                 class="game-progress-fill">
+            </div>
+        </div>
+
+        <div class="game-question-card">
+
+            <p id="wordsQuestion"
+               class="game-word">
+            </p>
+
+            <p>
+                Co oznacza to słowo po polsku?
+            </p>
+
+        </div>
+
+        <div id="wordsAnswers"
+             class="answers-grid">
+        </div>
+
+        <p id="wordsFeedback"
+           class="game-feedback">
+        </p>
+
+        <div id="wordsLoading"
+             class="game-loading">
+
+            <div class="game-loading-text">
+                Następne pytanie za
+                <span id="wordsCountdown">3</span> s…
+            </div>
+
+            <div class="game-loading-track">
+                <div id="wordsLoadingFill"
+                     class="game-loading-fill">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="wordsResult"
+             class="game-result"
+             style="display:none">
+        </div>
+
+    </div>
+
+
+    <div id="franceGame"
+         class="game-panel"
+         style="display:none">
+
+        <button class="game-back"
+                onclick="backToGames()">
+            ← Wróć do wyboru gier
+        </button>
+
+        <div class="game-topline">
+            <span id="franceProgress">1 / 15</span>
+            <span id="franceScore">Punkty: 0</span>
+        </div>
+
+        <div class="game-progress-track">
+            <div id="franceProgressBar"
+                 class="game-progress-fill">
+            </div>
+        </div>
+
+        <div class="game-question-card">
+
+            <p id="franceQuestion"
+               class="game-word">
+            </p>
+
+            <p>
+                Wybierz poprawną odpowiedź.
+            </p>
+
+        </div>
+
+        <div id="franceAnswers"
+             class="answers-grid">
+        </div>
+
+        <p id="franceFeedback"
+           class="game-feedback">
+        </p>
+
+        <div id="franceLoading"
+             class="game-loading">
+
+            <div class="game-loading-text">
+                Następne pytanie za
+                <span id="franceCountdown">3</span> s…
+            </div>
+
+            <div class="game-loading-track">
+                <div id="franceLoadingFill"
+                     class="game-loading-fill">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="franceResult"
+             class="game-result"
+             style="display:none">
+        </div>
+
+    </div>
 
 </div>
 
@@ -687,136 +1432,118 @@ Kraj sztuki, historii, mody, kuchni i niezwykłych krajobrazów.
 
 
 <!-- =========================
-     QUIZ START
+     QUIZ
 ========================= -->
 
 <section id="quiz" class="section">
 
-<div id="startScreen" class="start-card">
+<div class="quiz-container">
 
-<h2>Gotowy?</h2>
+    <div id="quizStart"
+         class="start-card">
 
-<p>
-Podaj swoje dane i rozpocznij 25-pytaniowy quiz
-o Francji.
-</p>
+        <h2>Quiz 🇫🇷</h2>
 
-<input
-id="firstName"
-class="input"
-placeholder="Imię"
->
+        <p>
+            Sprawdź swoją wiedzę o Francji.
+            Quiz ma 25 pytań.
+        </p>
 
-<input
-id="lastName"
-class="input"
-placeholder="Nazwisko"
->
+        <input id="firstName"
+               class="input"
+               placeholder="Imię">
 
-<button
-class="primary-btn"
-style="width:100%; margin-top:8px;"
-onclick="startQuiz()"
->
-Rozpocznij quiz →
-</button>
+        <input id="lastName"
+               class="input"
+               placeholder="Nazwisko">
 
-</div>
+        <button class="primary-btn"
+                style="width:100%"
+                onclick="startQuiz()">
+            Rozpocznij quiz →
+        </button>
+
+    </div>
 
 
-<div
-id="quizScreen"
-class="quiz-container"
-style="display:none;"
->
+    <div id="quizScreen"
+         style="display:none">
 
-<div class="quiz-header">
+        <div class="quiz-header">
 
-<div class="quiz-top">
+            <div class="quiz-top">
 
-<span id="questionNumber">
-Pytanie 1 / 25
-</span>
+                <span id="questionNumber">
+                    Pytanie 1 / 25
+                </span>
 
-<span id="scoreDisplay">
-Wynik: 0
-</span>
+                <span id="scoreDisplay">
+                    Punkty: 0
+                </span>
 
-</div>
+            </div>
 
-<div class="progress">
+            <div class="progress">
+                <div id="progressBar"
+                     class="progress-bar">
+                </div>
+            </div>
 
-<div
-id="progressBar"
-class="progress-bar"
-></div>
-
-</div>
-
-</div>
+        </div>
 
 
-<div class="quiz-card">
+        <div class="quiz-card">
 
-<div
-id="question"
-class="question"
->
-</div>
+            <div id="question"
+                 class="question">
+            </div>
 
-<div
-id="answers"
-class="answers"
-></div>
+            <div id="answers"
+                 class="answers">
+            </div>
 
-<button
-id="nextButton"
-class="next-btn"
-disabled
-onclick="nextQuestion()"
->
-Wybierz odpowiedź
-</button>
+            <button id="nextButton"
+                    class="next-btn"
+                    disabled
+                    onclick="nextQuestion()">
+                Następne pytanie →
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 
-<div
-id="resultScreen"
-class="result-card"
-style="display:none;"
->
+    <div id="resultScreen"
+         style="display:none">
 
-<div class="result-icon">
-🇫🇷
-</div>
+        <div class="result-card">
 
-<h2>Quiz ukończony!</h2>
+            <div class="result-icon">
+                🏆
+            </div>
 
-<div
-id="finalScore"
-class="score"
->
-0 / 25
-</div>
+            <h2>Koniec quizu!</h2>
 
-<p id="resultMessage"></p>
+            <div id="finalScore"
+                 class="score">
+                0 / 25
+            </div>
 
-<div
-id="saveStatus"
-class="save-status"
->
-Zapisywanie wyniku...
-</div>
+            <p id="resultMessage"></p>
 
-<button
-class="primary-btn"
-onclick="restartQuiz()"
->
-Spróbuj ponownie
-</button>
+            <p id="saveStatus"
+               class="save-status">
+            </p>
+
+            <button class="primary-btn"
+                    onclick="restartQuiz()">
+                Zagraj ponownie
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -824,702 +1551,1313 @@ Spróbuj ponownie
 
 
 <!-- =========================
-     INFO
+     RANKING
 ========================= -->
 
-<!-- =========================
-     INFO
-========================= -->
-
-<section id="info" class="section">
+<section id="ranking" class="section">
 
 <h2 class="page-title">
-Francja w pigułce 🇫🇷
+    Ranking 🏆
 </h2>
 
 <p class="page-subtitle">
-Najważniejsze informacje, które warto znać.
+    Wszystkie wyniki głównego quizu Bonjour France.
 </p>
 
-<div class="cards">
+<div class="ranking-card">
 
-<div class="info-card">
-<div class="info-icon">🏛️</div>
-<h3>Stolica</h3>
-<p>
-Stolicą Francji jest Paryż – jedno z najbardziej
-znanych miast Europy.
-</p>
-</div>
+    <div class="ranking-header">
+        <span>#</span>
+        <span>Użytkownik</span>
+        <span>Punkty</span>
+    </div>
 
-<div class="info-card">
-<div class="info-icon">💶</div>
-<h3>Waluta</h3>
-<p>
-Francja należy do strefy euro. Oficjalną walutą
-jest euro (€).
-</p>
-</div>
+    <div id="rankingList"></div>
 
-<div class="info-card">
-<div class="info-icon">🗣️</div>
-<h3>Język</h3>
-<p>
-Językiem urzędowym jest język francuski.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🏔️</div>
-<h3>Najwyższy szczyt</h3>
-<p>
-Mont Blanc ma około 4809 metrów wysokości
-i znajduje się w Alpach.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🌊</div>
-<h3>Morza i oceany</h3>
-<p>
-Francja ma dostęp m.in. do Oceanu Atlantyckiego,
-Morza Śródziemnego oraz Morza Północnego.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🗺️</div>
-<h3>Regiony</h3>
-<p>
-Francja metropolitalna jest podzielona na wiele
-regionów, m.in. Normandię, Bretanię czy Nową Akwitanię.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">👥</div>
-<h3>Ludność</h3>
-<p>
-Francja należy do najludniejszych państw Europy.
-Mieszka w niej ponad 68 milionów osób.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">📍</div>
-<h3>Położenie</h3>
-<p>
-Francja znajduje się w Europie Zachodniej. Graniczy
-m.in. z Hiszpanią, Włochami, Niemcami i Belgią.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🏰</div>
-<h3>Wersal</h3>
-<p>
-Pałac w Wersalu był rezydencją francuskich monarchów
-i symbolem potęgi monarchii.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🎨</div>
-<h3>Sztuka</h3>
-<p>
-Francja odegrała ogromną rolę w rozwoju malarstwa,
-rzeźby, architektury i innych dziedzin sztuki.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🍷</div>
-<h3>Winiarstwo</h3>
-<p>
-Francja jest jednym z najbardziej znanych krajów
-winiarskich na świecie. Słyną z niego m.in. Bordeaux i Burgundia.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🥖</div>
-<h3>Kuchnia</h3>
-<p>
-Kuchnia francuska słynie m.in. z bagietek, serów,
-croissantów, naleśników i wielu regionalnych potraw.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🚄</div>
-<h3>Kolej dużych prędkości</h3>
-<p>
-Francja posiada sieć szybkich pociągów TGV,
-które łączą największe miasta kraju.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">⚽</div>
-<h3>Sport</h3>
-<p>
-Popularnymi sportami we Francji są m.in. piłka nożna,
-rugby, tenis oraz kolarstwo.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🚴</div>
-<h3>Tour de France</h3>
-<p>
-Tour de France to jeden z najbardziej znanych
-wyścigów kolarskich na świecie.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🎭</div>
-<h3>Kultura</h3>
-<p>
-Francja jest znana z bogatej kultury, teatru, kina,
-literatury, muzyki oraz mody.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">👗</div>
-<h3>Moda</h3>
-<p>
-Paryż jest jednym z najważniejszych światowych
-ośrodków mody i siedzibą wielu znanych domów mody.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🌹</div>
-<h3>Prowansja</h3>
-<p>
-Prowansja słynie z malowniczych krajobrazów,
-lawendowych pól, oliwek i śródziemnomorskiego klimatu.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🏖️</div>
-<h3>Lazurowe Wybrzeże</h3>
-<p>
-Lazurowe Wybrzeże znajduje się nad Morzem Śródziemnym
-i słynie z miejscowości takich jak Nicea i Cannes.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🌊</div>
-<h3>Korsyka</h3>
-<p>
-Korsyka to górzysta wyspa na Morzu Śródziemnym
-należąca do Francji.
-</p>
-</div>
-
-<div class="info-card">
-<div class="info-icon">🏝️</div>
-<h3>Terytoria zamorskie</h3>
-<p>
-Francja posiada również terytoria poza Europą,
-m.in. Gwadelupę, Martynikę, Gujanę Francuską i Réunion.
-</p>
-</div>
+    <div id="emptyRanking"
+         class="empty-ranking">
+        🥐 Brak wyników. Zagraj w quiz i zostań pierwszy!
+    </div>
 
 </div>
 
 </section>
 
 
-
 <!-- =========================
-     FACTS
+     O FRANCJI
 ========================= -->
 
+<section id="info"
+         class="section france-reading">
+
+<h2 class="page-title">
+    🇫🇷 Francja — informacje
+</h2>
+
+<p class="page-subtitle">
+    Wybierz kategorię, aby poczytać więcej o Francji.
+    Te kafelki znajdują się WYŁĄCZNIE w zakładce
+    „O Francji”.
+</p>
+
+
+<div class="category-grid">
+
+    <button class="category-card"
+            onclick="openFranceCategory('geo')">
+
+        <span>🗺️</span>
+
+        <strong>Geografia</strong>
+
+        <small>
+            Krajobrazy, góry, morza i klimat
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('economy')">
+
+        <span>💶</span>
+
+        <strong>Gospodarka</strong>
+
+        <small>
+            Przemysł, rolnictwo, transport i turystyka
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('people')">
+
+        <span>👥</span>
+
+        <strong>Ludność i społeczeństwo</strong>
+
+        <small>
+            Język, miasta i życie codzienne
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('history')">
+
+        <span>📜</span>
+
+        <strong>Historia</strong>
+
+        <small>
+            Od monarchii do współczesnej Francji
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('state')">
+
+        <span>🏛️</span>
+
+        <strong>Państwo i polityka</strong>
+
+        <small>
+            Ustrój, symbole i instytucje
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('food')">
+
+        <span>🥐</span>
+
+        <strong>Kuchnia</strong>
+
+        <small>
+            Potrawy, produkty i tradycje kulinarne
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('culture')">
+
+        <span>🎨</span>
+
+        <strong>Kultura i sztuka</strong>
+
+        <small>
+            Muzyka, literatura, malarstwo i moda
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('regions')">
+
+        <span>🗼</span>
+
+        <strong>Miasta i regiony</strong>
+
+        <small>
+            Paryż, Prowansja, Normandia i inne
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('tech')">
+
+        <span>🚄</span>
+
+        <strong>Technologie i nauka</strong>
+
+        <small>
+            Koleje, lotnictwo, kosmos i badania
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('world')">
+
+        <span>🌍</span>
+
+        <strong>Francja na świecie</strong>
+
+        <small>
+            Terytoria zamorskie i znaczenie międzynarodowe
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('sport')">
+
+        <span>⚽</span>
+
+        <strong>Sport</strong>
+
+        <small>
+            Piłka nożna, kolarstwo i wielkie imprezy
+        </small>
+
+    </button>
+
+
+    <button class="category-card"
+            onclick="openFranceCategory('education')">
+
+        <span>🎓</span>
+
+        <strong>Edukacja i nauka</strong>
+
+        <small>
+            Szkoły, uniwersytety i odkrycia
+        </small>
+
+    </button>
+
+</div>
+
+
+<div id="franceCategoryContent"
+     class="category-content"
+     style="display:none">
+</div>
+
+</section>
+
+
 <!-- =========================
-     FACTS
+     CIEKAWOSTKI
 ========================= -->
 
 <section id="facts" class="section">
 
 <h2 class="page-title">
-Ciekawostki 💡
+    Ciekawostki 🇫🇷
 </h2>
 
 <p class="page-subtitle">
-Kilka rzeczy, które mogą Cię zaskoczyć.
+    100 ciekawych informacji o Francji.
 </p>
 
-<div class="fact">
-<strong>🥐 Croissant nie powstał we Francji</strong>
-<p>
-Jego historia wiąże się z Austrią, a dopiero później
-stał się jednym z symboli francuskiej kuchni.
-</p>
+
+<div class="facts-layout">
+
+    <div class="random-fact-card">
+
+        <div class="random-fact-badge">
+            🎲 LOSOWA CIEKAWOSTKA
+        </div>
+
+        <div id="randomFactIcon"
+             class="random-fact-icon">
+            🇫🇷
+        </div>
+
+        <h3 id="randomFactTitle">
+            Kliknij i sprawdź!
+        </h3>
+
+        <p id="randomFactText">
+            Może trafisz na coś, czego kompletnie
+            nie wiedziałeś o Francji.
+        </p>
+
+        <div id="randomFactCategory"
+             class="random-fact-category">
+            100 ciekawostek czeka
+        </div>
+
+        <button class="random-fact-button"
+                onclick="drawRandomFact()">
+            🎲 LOSUJ CIEKAWOSTKĘ
+        </button>
+
+    </div>
+
+
+    <div class="facts-info-box">
+
+        <strong>
+            📚 Informacje o Francji
+        </strong>
+
+        <p>
+            Tutaj znajdują się krótkie ciekawostki
+            o Francji.
+        </p>
+
+        <div class="fact-count">
+            <span id="factCount">100</span>
+            ciekawostek
+        </div>
+
+    </div>
+
 </div>
 
-<div class="fact">
-<strong>🗼 Wieża Eiffla miała być tymczasowa</strong>
-<p>
-Wieża została zbudowana z okazji Wystawy Światowej
-w 1889 roku i początkowo planowano ją rozebrać.
-</p>
-</div>
 
-<div class="fact">
-<strong>🎬 Cannes i świat filmu</strong>
-<p>
-Cannes słynie z jednego z najbardziej prestiżowych
-festiwali filmowych na świecie.
-</p>
-</div>
-
-<div class="fact">
-<strong>👑 Ludwik XIV</strong>
-<p>
-Ludwik XIV był znany jako „Król Słońce” i jest jednym
-z najbardziej rozpoznawalnych francuskich monarchów.
-</p>
-</div>
-
-<div class="fact">
-<strong>🍷 Bordeaux</strong>
-<p>
-Region Bordeaux jest znany na całym świecie
-z produkcji wina.
-</p>
-</div>
-
-<div class="fact">
-<strong>🏝️ Korsyka</strong>
-<p>
-Korsyka jest największą wyspą należącą do Francji
-metropolitalnej.
-</p>
-</div>
-
-<div class="fact">
-<strong>🥖 Bagietka ma ogromne znaczenie we Francji</strong>
-<p>
-Bagietka jest jednym z najbardziej rozpoznawalnych
-symboli francuskiej kultury kulinarnej.
-</p>
-</div>
-
-<div class="fact">
-<strong>🖼️ Luwr był kiedyś pałacem</strong>
-<p>
-Zanim stał się słynnym muzeum, Luwr pełnił funkcję
-pałacu królewskiego.
-</p>
-</div>
-
-<div class="fact">
-<strong>🎨 Mona Lisa w Luwrze</strong>
-<p>
-Słynny obraz Leonarda da Vinci „Mona Lisa” znajduje
-się w paryskim Luwrze.
-</p>
-</div>
-
-<div class="fact">
-<strong>🚲 Tour de France</strong>
-<p>
-Tour de France jest jednym z najważniejszych
-i najbardziej rozpoznawalnych wyścigów kolarskich świata.
-</p>
-</div>
-
-<div class="fact">
-<strong>🧀 Francja słynie z serów</strong>
-<p>
-Francja posiada ogromną różnorodność regionalnych serów,
-a sery są ważną częścią tamtejszej kuchni.
-</p>
-</div>
-
-<div class="fact">
-<strong>🗺️ Francja jest bardzo różnorodna</strong>
-<p>
-W jednym kraju można znaleźć wysokie góry, wybrzeża,
-plaże, winnice, lasy i rozległe równiny.
-</p>
-</div>
-
-<div class="fact">
-<strong>🏔️ Mont Blanc leży w Alpach</strong>
-<p>
-Mont Blanc jest najwyższym szczytem Alp i jednym
-z najbardziej znanych szczytów Europy.
-</p>
-</div>
-
-<div class="fact">
-<strong>🚄 TGV jest bardzo szybkim pociągiem</strong>
-<p>
-Francuskie pociągi TGV należą do najszybszych
-pociągów pasażerskich używanych na świecie.
-</p>
-</div>
-
-<div class="fact">
-<strong>💡 Francja dała światu wiele wynalazków</strong>
-<p>
-Z Francją związane są m.in. początki fotografii,
-kina oraz wiele ważnych osiągnięć naukowych.
-</p>
-</div>
-
-<div class="fact">
-<strong>🎥 Francja jest ważna dla historii kina</strong>
-<p>
-Bracia Lumière należeli do pionierów kina i organizowali
-jedne z pierwszych publicznych pokazów filmowych.
-</p>
-</div>
-
-<div class="fact">
-<strong>🎨 Impresjonizm ma silne związki z Francją</strong>
-<p>
-Francja odegrała kluczową rolę w rozwoju impresjonizmu.
-Tworzyli tam m.in. Claude Monet i Pierre-Auguste Renoir.
-</p>
-</div>
-
-<div class="fact">
-<strong>🏛️ Łuk Triumfalny</strong>
-<p>
-Łuk Triumfalny w Paryżu został wzniesiony na polecenie
-Napoleona Bonapartego.
-</p>
-</div>
-
-<div class="fact">
-<strong>🌸 Paryż nazywany jest Miastem Świateł</strong>
-<p>
-Paryż jest często określany jako „Miasto Świateł”,
-co wiąże się zarówno z jego oświetleniem, jak i znaczeniem
-w historii nauki i kultury.
-</p>
-</div>
-
-<div class="fact">
-<strong>🏰 Francja ma tysiące zamków</strong>
-<p>
-We Francji znajduje się ogromna liczba historycznych
-zamków i pałaców, szczególnie w dolinie Loary.
-</p>
-</div>
-
-<div class="fact">
-<strong>🌊 Francja ma terytoria na wielu oceanach</strong>
-<p>
-Dzięki swoim terytoriom zamorskim Francja jest obecna
-nie tylko w Europie, ale również na innych obszarach świata.
-</p>
-</div>
+<div id="categoryFacts"></div>
 
 </section>
 
+
+<!-- =========================
+     O STRONIE
+========================= -->
+
+<section id="about" class="section">
+
+<div class="about-app">
+
+    <div class="about-hero">
+
+        <div class="about-badge">
+            🇫🇷 BONJOUR FRANCE • PROJEKT 2026
+        </div>
+
+        <h2>
+            O <span>stronie</span>
+        </h2>
+
+        <p class="about-lead">
+
+            „Bonjour France” to interaktywna strona
+            edukacyjna przygotowana z okazji
+            <strong>Dnia Języków Obcych 2026</strong>.
+
+            Jej celem jest połączenie nauki języka
+            francuskiego z poznawaniem Francji,
+            jej kultury, historii, symboli
+            i ciekawostek.
+
+        </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                💻
+            </div>
+
+            <h3>
+                W jakim języku powstała?
+            </h3>
+
+            <p>
+
+                Strona została napisana w językach
+                <strong>HTML, CSS i JavaScript</strong>,
+                przy pomocy sztucznej inteligencji.
+
+                HTML odpowiada za strukturę strony,
+                CSS za wygląd, a JavaScript za quiz,
+                gry, punktację i interakcje.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🔒
+            </div>
+
+            <h3>
+                Co z danymi?
+            </h3>
+
+            <p>
+
+                Gry dodatkowe nie zapisują wyników
+                do rankingu.
+
+                Główny quiz jest wyjątkiem —
+                ranking zapisuje podane imię oraz wynik,
+                aby uczestnicy mogli zobaczyć wspólną
+                klasyfikację.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🧠
+            </div>
+
+            <h3>
+                Dlaczego nie przechowujemy więcej danych?
+            </h3>
+
+            <p>
+
+                Jest to projekt szkolny, dlatego nie ma
+                potrzeby gromadzenia dodatkowych informacji
+                o użytkownikach.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🌍
+            </div>
+
+            <h3>
+                Po co powstała?
+            </h3>
+
+            <p>
+
+                Strona powstała specjalnie z okazji
+                <strong>Dnia Języków Obcych</strong>,
+                aby pokazać, że nauka języka może być
+                ciekawa, nowoczesna i interaktywna.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-author">
+
+        <strong>
+            ✍️ Strona internetowa napisana przez Dawida Drelę
+        </strong>
+
+        <span>
+            Projekt edukacyjny • Bonjour France 🇫🇷 •
+            Dzień Języków Obcych 2026
+        </span>
+
+    </div>
+
+</div>
+
+</section>
 
 </main>
 
 
 <footer>
-🇫🇷 Bonjour France • Quiz wiedzy o Francji
+    🇫🇷 Bonjour France • Projekt na Dzień Języków Obcych 2026 
 </footer>
 
 
 <script>
 
-/* =========================
-   APPS SCRIPT
-========================= */
+/* =====================================================
+   NAJWAŻNIEJSZA FUNKCJA — PRZEŁĄCZANIE ZAKŁADEK
+===================================================== */
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyURUlUJv8Tq1K8Tv-7bwv6IwUaZJhWX_0p3DUyyr_UKLLRCeOonU0XhOymJ3BLASxnFg/exec";
+function showSection(sectionId, button) {
+
+    /*
+       NAJPIERW UKRYWAMY ABSOLUTNIE WSZYSTKIE SEKCJE.
+       Dzięki temu zawartość "O Francji" nie pojawi się
+       pod Quizem, Grami, Rankingiem itd.
+    */
+
+    document.querySelectorAll('.section').forEach(function(section) {
+
+        section.classList.remove('active');
+
+        section.style.display = 'none';
+
+    });
 
 
-/* =========================
-   QUESTIONS
-========================= */
+    /*
+       POKAZUJEMY TYLKO WYBRANĄ SEKCJĘ
+    */
 
-const questions = [
+    const selectedSection =
+        document.getElementById(sectionId);
 
-{
-q: "Jaka jest stolica Francji?",
-a: ["Lyon", "Paryż", "Marsylia", "Nicea"],
-correct: 1
-},
+    if (selectedSection) {
 
-{
-q: "Który słynny zabytek znajduje się w Paryżu?",
-a: ["Big Ben", "Koloseum", "Wieża Eiffla", "Akropol"],
-correct: 2
-},
+        selectedSection.classList.add('active');
 
-{
-q: "Jaka waluta obowiązuje we Francji?",
-a: ["Frank", "Euro", "Funt", "Korona"],
-correct: 1
-},
+        selectedSection.style.display = 'block';
 
-{
-q: "Jaka jest najdłuższa rzeka Francji?",
-a: ["Sekwana", "Rodan", "Loara", "Garonna"],
-correct: 2
-},
+    }
 
-{
-q: "Jak nazywa się hymn Francji?",
-a: ["La Marseillaise", "Ode to Joy", "God Save the King", "Bella Ciao"],
-correct: 0
-},
 
-{
-q: "Jaki jest najwyższy szczyt Francji?",
-a: ["Mont Blanc", "Matterhorn", "Grossglockner", "Mulhacén"],
-correct: 0
-},
+    /*
+       AKTYWNY PRZYCISK MENU
+    */
 
-{
-q: "Jaki ocean znajduje się na zachód od Francji?",
-a: ["Ocean Indyjski", "Ocean Atlantycki", "Ocean Arktyczny", "Ocean Spokojny"],
-correct: 1
-},
+    document.querySelectorAll('.nav-links button')
+        .forEach(function(btn) {
 
-{
-q: "Które słynne muzeum znajduje się w Paryżu?",
-a: ["Luwr", "Prado", "Uffizi", "Hermitage"],
-correct: 0
-},
+            btn.classList.remove('active');
 
-{
-q: "Które miasto słynie z międzynarodowego festiwalu filmowego?",
-a: ["Cannes", "Lille", "Rouen", "Dijon"],
-correct: 0
-},
+        });
 
-{
-q: "Jaki kolor znajduje się po lewej stronie francuskiej flagi?",
-a: ["Czerwony", "Biały", "Niebieski", "Żółty"],
-correct: 2
-},
 
-{
-q: "Który słynny pałac znajduje się pod Paryżem?",
-a: ["Wersal", "Buckingham", "Schönbrunn", "Łazienki"],
-correct: 0
-},
+    if (button) {
 
-{
-q: "Jakie morze znajduje się na południu Francji?",
-a: ["Bałtyckie", "Śródziemne", "Czarne", "Północne"],
-correct: 1
-},
+        button.classList.add('active');
 
-{
-q: "Z czego szczególnie słynie Bordeaux?",
-a: ["Wina", "Herbaty", "Kawy", "Diamentów"],
-correct: 0
-},
+    }
 
-{
-q: "Który wypiek jest jednym z symboli francuskiej kuchni?",
-a: ["Croissant", "Pretzel", "Bagel", "Donut"],
-correct: 0
-},
 
-{
-q: "Jaki jest język urzędowy Francji?",
-a: ["Hiszpański", "Francuski", "Włoski", "Niemiecki"],
-correct: 1
-},
+    /*
+       JEŚLI OPUSZCZAMY "O FRANCJI",
+       ZAMYKAMY OTWARTĄ KATEGORIĘ.
+    */
 
-/* 16 */
+    if (sectionId !== 'info') {
 
-{
-q: "Który francuski region słynie z produkcji cydru i znajduje się na północnym zachodzie kraju?",
-a: ["Normandia", "Prowansja", "Alzacja", "Korsyka"],
-correct: 0
-},
+        const category =
+            document.getElementById('franceCategoryContent');
 
-{
-q: "W którym regionie Francji znajduje się Bordeaux?",
-a: ["Bretania", "Nowa Akwitania", "Normandia", "Grand Est"],
-correct: 1
-},
+        if (category) {
 
-{
-q: "W którym roku rozpoczęła się rewolucja francuska?",
-a: ["1689", "1789", "1889", "1815"],
-correct: 1
-},
+            category.style.display = 'none';
 
-{
-q: "Kto namalował obraz „Wolność wiodąca lud na barykady”?",
-a: ["Claude Monet", "Eugène Delacroix", "Paul Cézanne", "Edgar Degas"],
-correct: 1
-},
+            category.innerHTML = '';
 
-{
-q: "Która wyspa jest największą wyspą należącą do Francji metropolitalnej?",
-a: ["Korsyka", "Réunion", "Martynika", "Gwadelupa"],
-correct: 0
-},
+        }
 
-{
-q: "W którym roku powstała V Republika Francuska?",
-a: ["1945", "1950", "1958", "1968"],
-correct: 2
-},
+    }
 
-{
-q: "Który francuski król był nazywany „Królem Słońce”?",
-a: ["Ludwik XIII", "Ludwik XIV", "Ludwik XV", "Karol X"],
-correct: 1
-},
 
-{
-q: "Które francuskie miasto jest siedzibą wielu instytucji Unii Europejskiej?",
-a: ["Strasburg", "Bordeaux", "Nicea", "Tuluza"],
-correct: 0
-},
+    /*
+       JEŚLI OPUSZCZAMY CIEKAWOSTKI,
+       CZYŚCIMY JEJ DODATKOWĄ ZAWARTOŚĆ.
+    */
 
-{
-q: "Która góra jest najwyższym szczytem Alp?",
-a: ["Mont Blanc", "Etna", "Ben Nevis", "Triglav"],
-correct: 0
-},
+    if (sectionId !== 'facts') {
 
-{
-q: "Jak nazywa się słynny pałac będący symbolem absolutyzmu Ludwika XIV?",
-a: ["Wersal", "Luwr", "Fontainebleau", "Chambord"],
-correct: 0
+        const facts =
+            document.getElementById('categoryFacts');
+
+        if (facts) {
+
+            facts.innerHTML = '';
+
+        }
+
+    }
+
+
+    /*
+       QUIZ I GRY NIE ZAPISUJĄ POSTĘPU.
+       Po przejściu do innej zakładki wracają od początku.
+    */
+
+    if (sectionId !== 'quiz') {
+
+        resetQuiz();
+
+    }
+
+    if (sectionId !== 'games') {
+
+        resetGames();
+
+    }
+
+
+    /*
+       RANKING ODŚWIEŻAMY PO WEJŚCIU W ZAKŁADKĘ.
+    */
+
+    if (sectionId === 'ranking') {
+
+        loadRanking();
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
 }
+
+
+/*
+   Dla przycisków z innych miejsc strony,
+   np. "Rozpocznij quiz".
+*/
+
+function showSectionById(sectionId) {
+
+    const button =
+        document.querySelector(
+            '.nav-links button[onclick*="' + sectionId + '"]'
+        );
+
+    showSection(sectionId, button);
+
+}
+
+
+/* =====================================================
+   O FRANCJI — KATEGORIE
+===================================================== */
+
+const franceCategories = {
+
+    geo: {
+        icon: "🗺️",
+        title: "Geografia Francji",
+        articles: [
+
+            [
+                "Położenie",
+                "Francja znajduje się w zachodniej części Europy. " +
+                "Jej położenie sprawia, że kraj ma dostęp zarówno " +
+                "do Oceanu Atlantyckiego i kanału La Manche, " +
+                "jak i do Morza Śródziemnego."
+            ],
+
+            [
+                "Krajobrazy",
+                "Francja ma bardzo zróżnicowane krajobrazy: " +
+                "od nizin i wybrzeży, przez wzgórza, aż po wysokie " +
+                "góry. Znajdują się tu między innymi Alpy i Pireneje."
+            ],
+
+            [
+                "Rzeki",
+                "Do najważniejszych rzek Francji należą Sekwana, " +
+                "Loara, Rodan i Garonna. Sekwana przepływa przez Paryż."
+            ],
+
+            [
+                "Wybrzeże",
+                "Francja posiada długie i zróżnicowane wybrzeże. " +
+                "Można tu znaleźć plaże Atlantyku, wybrzeże kanału " +
+                "La Manche oraz słynne Lazurowe Wybrzeże."
+            ]
+
+        ]
+    },
+
+
+    economy: {
+        icon: "💶",
+        title: "Gospodarka",
+        articles: [
+
+            [
+                "Duża gospodarka Europy",
+                "Francja jest jedną z największych gospodarek Europy. " +
+                "Ważną rolę odgrywają usługi, przemysł, rolnictwo " +
+                "i turystyka."
+            ],
+
+            [
+                "Rolnictwo",
+                "Francja należy do najważniejszych producentów " +
+                "rolnych w Europie. Znana jest między innymi " +
+                "z produkcji zbóż, winogron, serów i innych produktów."
+            ],
+
+            [
+                "Turystyka",
+                "Turystyka ma ogromne znaczenie dla Francji. " +
+                "Turyści przyjeżdżają między innymi do Paryża, " +
+                "na Lazurowe Wybrzeże, do zamków nad Loarą " +
+                "i w Alpy."
+            ],
+
+            [
+                "Transport",
+                "Francja posiada rozbudowaną sieć kolejową, drogową " +
+                "i lotniczą. Szczególnie znane są szybkie pociągi TGV."
+            ]
+
+        ]
+    },
+
+
+    people: {
+        icon: "👥",
+        title: "Ludność i społeczeństwo",
+        articles: [
+
+            [
+                "Język",
+                "Oficjalnym językiem Francji jest język francuski. " +
+                "Język francuski jest również używany w wielu innych " +
+                "częściach świata."
+            ],
+
+            [
+                "Miasta",
+                "Największym i najbardziej znanym miastem Francji " +
+                "jest Paryż. Inne ważne miasta to między innymi " +
+                "Marsylia, Lyon, Tuluza, Nicea i Bordeaux."
+            ],
+
+            [
+                "Życie codzienne",
+                "Francuska kultura codzienna jest mocno związana " +
+                "z jedzeniem, spotkaniami towarzyskimi, kawiarniami " +
+                "i lokalnymi tradycjami."
+            ]
+
+        ]
+    },
+
+
+    history: {
+        icon: "📜",
+        title: "Historia",
+        articles: [
+
+            [
+                "Rewolucja Francuska",
+                "Rewolucja Francuska rozpoczęła się w 1789 roku. " +
+                "Było to jedno z najważniejszych wydarzeń " +
+                "w historii Europy."
+            ],
+
+            [
+                "Napoleon",
+                "Napoleon Bonaparte odegrał ogromną rolę w historii " +
+                "Francji i Europy. W 1804 roku został cesarzem Francuzów."
+            ],
+
+            [
+                "Monarchia",
+                "Przez dużą część swojej historii Francja była monarchią. " +
+                "Jednym z najbardziej znanych francuskich władców " +
+                "był Ludwik XIV."
+            ],
+
+            [
+                "Francja współczesna",
+                "Współczesna Francja jest republiką. Obecny system " +
+                "polityczny jest związany z V Republiką, ustanowioną " +
+                "w 1958 roku."
+            ]
+
+        ]
+    },
+
+
+    state: {
+        icon: "🏛️",
+        title: "Państwo i polityka",
+        articles: [
+
+            [
+                "Republika",
+                "Francja jest republiką. Jej oficjalna nazwa " +
+                "to Republika Francuska."
+            ],
+
+            [
+                "Symbole",
+                "Do symboli Francji należą między innymi trójkolorowa " +
+                "flaga, hymn „Marsylianka” oraz motto „Wolność, " +
+                "Równość, Braterstwo”."
+            ],
+
+            [
+                "Paryż",
+                "Paryż jest stolicą Francji i centrum politycznym " +
+                "oraz administracyjnym państwa."
+            ]
+
+        ]
+    },
+
+
+    food: {
+        icon: "🥐",
+        title: "Kuchnia francuska",
+        articles: [
+
+            [
+                "Francuska gastronomia",
+                "Kuchnia francuska jest znana na całym świecie. " +
+                "Duże znaczenie mają regionalne produkty, tradycje " +
+                "i sposób podawania posiłków."
+            ],
+
+            [
+                "Sery",
+                "Francja słynie z ogromnej różnorodności serów. " +
+                "W różnych regionach powstają produkty o odmiennych " +
+                "smakach i metodach produkcji."
+            ],
+
+            [
+                "Pieczywo",
+                "Bagietka jest jednym z najbardziej rozpoznawalnych " +
+                "symboli francuskiej kuchni."
+            ],
+
+            [
+                "Desery",
+                "Do popularnych francuskich deserów należą między innymi " +
+                "crème brûlée, tarte Tatin i éclair."
+            ]
+
+        ]
+    },
+
+
+    culture: {
+        icon: "🎨",
+        title: "Kultura i sztuka",
+        articles: [
+
+            [
+                "Malarstwo",
+                "Francja odegrała ogromną rolę w rozwoju europejskiego " +
+                "malarstwa. Paryż był ważnym centrum artystycznym."
+            ],
+
+            [
+                "Literatura",
+                "Francuska literatura ma długą tradycję. Wśród znanych " +
+                "autorów znajdują się Victor Hugo, Alexandre Dumas " +
+                "i Jules Verne."
+            ],
+
+            [
+                "Moda",
+                "Paryż jest jednym z najważniejszych światowych centrów " +
+                "mody. Odbywają się tu pokazy największych domów mody."
+            ],
+
+            [
+                "Kino",
+                "Francja ma bardzo silną tradycję filmową. To właśnie " +
+                "we Francji narodziły się początki kinematografii."
+            ]
+
+        ]
+    },
+
+
+    regions: {
+        icon: "🗼",
+        title: "Miasta i regiony",
+        articles: [
+
+            [
+                "Paryż",
+                "Stolica Francji jest jednym z najbardziej rozpoznawalnych " +
+                "miast świata. Znajdują się tu między innymi Wieża Eiffla, " +
+                "Luwr i katedra Notre-Dame."
+            ],
+
+            [
+                "Prowansja",
+                "Prowansja kojarzy się z południem Francji, słońcem, " +
+                "lawendą, oliwkami i malowniczymi krajobrazami."
+            ],
+
+            [
+                "Normandia",
+                "Normandia leży na północy Francji. Region słynie " +
+                "między innymi z Mont-Saint-Michel i pięknych wybrzeży."
+            ],
+
+            [
+                "Alzacja",
+                "Alzacja znajduje się przy granicy z Niemcami. " +
+                "Jej miasta wyróżniają się charakterystyczną architekturą."
+            ]
+
+        ]
+    },
+
+
+    tech: {
+        icon: "🚄",
+        title: "Technologie i nauka",
+        articles: [
+
+            [
+                "TGV",
+                "Francuskie koleje dużych prędkości TGV są jednym " +
+                "z symboli nowoczesnego transportu we Francji."
+            ],
+
+            [
+                "Lotnictwo",
+                "Francja ma bardzo rozwinięty przemysł lotniczy " +
+                "i kosmiczny oraz uczestniczy w wielu międzynarodowych " +
+                "projektach technologicznych."
+            ],
+
+            [
+                "Kosmos",
+                "Francja jest ważnym europejskim uczestnikiem badań " +
+                "kosmicznych i działalności Europejskiej Agencji Kosmicznej."
+            ]
+
+        ]
+    },
+
+
+    world: {
+        icon: "🌍",
+        title: "Francja na świecie",
+        articles: [
+
+            [
+                "Terytoria zamorskie",
+                "Francja posiada terytoria położone poza Europą. " +
+                "Dzięki nim państwo ma obecność w różnych częściach świata."
+            ],
+
+            [
+                "Język francuski",
+                "Francuski jest językiem używanym na wielu kontynentach. " +
+                "Jest jednym z ważnych języków międzynarodowych."
+            ],
+
+            [
+                "Europa",
+                "Francja jest jednym z najważniejszych państw Unii Europejskiej."
+            ]
+
+        ]
+    },
+
+
+    sport: {
+        icon: "⚽",
+        title: "Sport",
+        articles: [
+
+            [
+                "Piłka nożna",
+                "Reprezentacja Francji należy do najbardziej utytułowanych " +
+                "drużyn piłkarskich świata."
+            ],
+
+            [
+                "Tour de France",
+                "Tour de France to jeden z najbardziej znanych wyścigów " +
+                "kolarskich na świecie."
+            ],
+
+            [
+                "Roland-Garros",
+                "Roland-Garros w Paryżu jest jednym z najważniejszych " +
+                "turniejów tenisowych świata."
+            ]
+
+        ]
+    },
+
+
+    education: {
+        icon: "🎓",
+        title: "Edukacja i nauka",
+        articles: [
+
+            [
+                "Szkolnictwo",
+                "Francja posiada rozbudowany system edukacji obejmujący " +
+                "szkoły, uczelnie i wyspecjalizowane szkoły wyższe."
+            ],
+
+            [
+                "Uniwersytety",
+                "Francja posiada wiele znanych uczelni i instytucji " +
+                "naukowych."
+            ],
+
+            [
+                "Odkrycia",
+                "Francuscy naukowcy mieli duży udział w rozwoju matematyki, " +
+                "fizyki, chemii, biologii i medycyny."
+            ]
+
+        ]
+    }
+
+};
+
+
+/* Otwieranie kategorii */
+
+function openFranceCategory(category) {
+
+    const data = franceCategories[category];
+
+    if (!data) return;
+
+    const box =
+        document.getElementById(
+            'franceCategoryContent'
+        );
+
+    let html = `
+        <h3>
+            ${data.icon} ${data.title}
+        </h3>
+    `;
+
+
+    data.articles.forEach(function(article) {
+
+        html += `
+            <h4>${article[0]}</h4>
+            <p>${article[1]}</p>
+        `;
+
+    });
+
+
+    html += `
+        <button
+            class="category-back"
+            onclick="closeFranceCategory()">
+            ← Wróć do kategorii
+        </button>
+    `;
+
+
+    box.innerHTML = html;
+
+    box.style.display = 'block';
+
+    box.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+}
+
+
+/* Zamknięcie kategorii */
+
+function closeFranceCategory() {
+
+    const box =
+        document.getElementById(
+            'franceCategoryContent'
+        );
+
+    box.style.display = 'none';
+
+    box.innerHTML = '';
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const quizQuestions = [
+
+    {
+        q:"Jaka jest stolica Francji?",
+        a:["Paryż","Lyon","Marsylia","Nicea"],
+        correct:0
+    },
+
+    {
+        q:"Co jest symbolem Paryża?",
+        a:["Wieża Eiffla","Big Ben","Koloseum","Akropol"],
+        correct:0
+    },
+
+    {
+        q:"Która rzeka przepływa przez Paryż?",
+        a:["Sekwana","Loara","Rodan","Garonna"],
+        correct:0
+    },
+
+    {
+        q:"Jakie kolory ma flaga Francji?",
+        a:[
+            "Niebieski, biały, czerwony",
+            "Zielony, biały, czerwony",
+            "Niebieski, żółty, czerwony",
+            "Czarny, biały, czerwony"
+        ],
+        correct:0
+    },
+
+    {
+        q:"Jak brzmi francuskie „Dziękuję”?",
+        a:["Merci","Bonjour","Salut","Pardon"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się francuski hymn?",
+        a:["Marsylianka","Oda do radości","God Save the King","Bella Ciao"],
+        correct:0
+    },
+
+    {
+        q:"Które miasto słynie z festiwalu filmowego?",
+        a:["Cannes","Lille","Rouen","Dijon"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się słynny francuski wyścig kolarski?",
+        a:["Tour de France","Giro d’Italia","Vuelta","Paris-Roubaix"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się francuski szybki pociąg?",
+        a:["TGV","ICE","AVE","Eurostar"],
+        correct:0
+    },
+
+    {
+        q:"Który deser jest francuski?",
+        a:["Crème brûlée","Tiramisu","Baklava","Churros"],
+        correct:0
+    },
+
+    {
+        q:"Jak po francusku jest „dzień dobry”?",
+        a:["Bonjour","Merci","Bonsoir","Au revoir"],
+        correct:0
+    },
+
+    {
+        q:"Jak po francusku jest „do widzenia”?",
+        a:["Au revoir","Bonjour","Merci","Oui"],
+        correct:0
+    },
+
+    {
+        q:"Który zamek znajduje się we Francji?",
+        a:["Chambord","Wawel","Windsor","Neuschwanstein"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się słynne muzeum w Paryżu?",
+        a:["Luwr","Prado","Hermitage","Uffizi"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się słynna katedra w Paryżu?",
+        a:["Notre-Dame","Sagrada Familia","Westminster","Duomo"],
+        correct:0
+    },
+
+    {
+        q:"Które góry znajdują się we Francji?",
+        a:["Alpy","Karpacz","Sudety","Ural"],
+        correct:0
+    },
+
+    {
+        q:"Jakie morze znajduje się na południu Francji?",
+        a:["Morze Śródziemne","Bałtyckie","Czarne","Północne"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się francuska bagietka?",
+        a:["Baguette","Brioche","Croissant","Macaron"],
+        correct:0
+    },
+
+    {
+        q:"Który produkt jest mocno kojarzony z Francją?",
+        a:["Ser","Sushi","Tacos","Pierogi"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się słynne francuskie miasto nad Morzem Śródziemnym?",
+        a:["Nicea","Lille","Reims","Metz"],
+        correct:0
+    },
+
+    {
+        q:"Kto był cesarzem Francuzów?",
+        a:["Napoleon Bonaparte","Juliusz Cezar","Henryk VIII","Piotr Wielki"],
+        correct:0
+    },
+
+    {
+        q:"W którym roku rozpoczęła się rewolucja francuska?",
+        a:["1789","1492","1918","1945"],
+        correct:0
+    },
+
+    {
+        q:"Jakie jest motto Francji?",
+        a:[
+            "Wolność, Równość, Braterstwo",
+            "Pokój i Chleb",
+            "Bóg, Honor, Ojczyzna",
+            "Jedność i Siła"
+        ],
+        correct:0
+    },
+
+    {
+        q:"Jaki język jest oficjalnym językiem Francji?",
+        a:["Francuski","Hiszpański","Włoski","Niemiecki"],
+        correct:0
+    },
+
+    {
+        q:"Który z tych regionów znajduje się we Francji?",
+        a:["Prowansja","Bawaria","Katalonia","Toskania"],
+        correct:0
+    }
 
 ];
 
 
-/* =========================
-   VARIABLES
-========================= */
-
-let currentQuestion = 0;
-let score = 0;
-let selectedAnswer = null;
-let userAnswers = [];
-
-let firstName = "";
-let lastName = "";
+let quizIndex = 0;
+let quizScore = 0;
+let quizFirstName = "";
+let quizLastName = "";
 
 
-/* =========================
-   NAVIGATION
-========================= */
-
-function showSection(id, button = null) {
-
-    document.querySelectorAll(".section")
-        .forEach(section => {
-            section.classList.remove("active");
-        });
-
-    document.getElementById(id)
-        .classList.add("active");
-
-    document.querySelectorAll(".nav-links button")
-        .forEach(btn => btn.classList.remove("active"));
-
-    if (button) {
-        button.classList.add("active");
-    }
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-/* =========================
-   START QUIZ
-========================= */
+/* START QUIZU */
 
 function startQuiz() {
 
-    firstName =
+    quizIndex = 0;
+    quizScore = 0;
+
+    quizFirstName =
         document.getElementById("firstName").value.trim();
 
-    lastName =
+    quizLastName =
         document.getElementById("lastName").value.trim();
 
-    if (!firstName || !lastName) {
+    if (!quizFirstName) {
 
-        alert("Wpisz imię i nazwisko.");
+        alert("Wpisz swoje imię.");
 
         return;
+
     }
 
-    currentQuestion = 0;
-    score = 0;
-    selectedAnswer = null;
-    userAnswers = [];
+    document.getElementById("quizStart").style.display = "none";
 
-    document.getElementById("startScreen")
-        .style.display = "none";
+    document.getElementById("quizScreen").style.display = "block";
 
-    document.getElementById("quizScreen")
-        .style.display = "block";
+    document.getElementById("resultScreen").style.display = "none";
 
-    document.getElementById("resultScreen")
-        .style.display = "none";
+    showQuestion();
 
-    loadQuestion();
 }
 
 
-/* =========================
-   LOAD QUESTION
-========================= */
+/* POKAŻ PYTANIE */
 
-function loadQuestion() {
-
-    selectedAnswer = null;
+function showQuestion() {
 
     const question =
-        questions[currentQuestion];
-
-    document.getElementById("question")
-        .textContent = question.q;
+        quizQuestions[quizIndex];
 
     document.getElementById("questionNumber")
         .textContent =
-        `Pytanie ${currentQuestion + 1} / ${questions.length}`;
+        `Pytanie ${quizIndex + 1} / ${quizQuestions.length}`;
 
     document.getElementById("scoreDisplay")
         .textContent =
-        `Wynik: ${score}`;
-
-    const progress =
-        ((currentQuestion + 1) / questions.length) * 100;
+        `Punkty: ${quizScore}`;
 
     document.getElementById("progressBar")
-        .style.width = progress + "%";
+        .style.width =
+        `${((quizIndex + 1) / quizQuestions.length) * 100}%`;
+
+    document.getElementById("question")
+        .textContent =
+        question.q;
 
 
-    const answersContainer =
+    const answers =
         document.getElementById("answers");
 
-    answersContainer.innerHTML = "";
+    answers.innerHTML = "";
 
 
-    question.a.forEach((answer, index) => {
+    question.a.forEach(function(answer,index) {
 
         const button =
             document.createElement("button");
@@ -1527,95 +2865,101 @@ function loadQuestion() {
         button.className = "answer";
 
         button.textContent =
-            `${String.fromCharCode(65 + index)}. ${answer}`;
+            answer;
 
-        button.onclick = () =>
-            selectAnswer(index, button);
+        button.onclick =
+            function() {
 
-        answersContainer.appendChild(button);
+                selectAnswer(index,button);
+
+            };
+
+        answers.appendChild(button);
 
     });
 
 
-    const nextButton =
-        document.getElementById("nextButton");
+    document.getElementById("nextButton")
+        .disabled = true;
 
-    nextButton.disabled = true;
-
-    nextButton.textContent =
-        currentQuestion === questions.length - 1
-        ? "Zakończ quiz"
-        : "Następne pytanie →";
 }
 
 
-/* =========================
-   SELECT ANSWER
-========================= */
+/* ODPOWIEDŹ */
 
-function selectAnswer(index, button) {
+function selectAnswer(index,button) {
 
-    document.querySelectorAll(".answer")
-        .forEach(btn => {
-            btn.classList.remove("selected");
-        });
+    const question =
+        quizQuestions[quizIndex];
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(function(btn) {
+
+        btn.disabled = true;
+
+    });
+
 
     button.classList.add("selected");
 
-    selectedAnswer = index;
+
+    if (index === question.correct) {
+
+        quizScore++;
+
+        button.style.borderColor = "#16a34a";
+
+        button.style.background = "#f0fdf4";
+
+    } else {
+
+        button.style.borderColor = "#ef4444";
+
+        button.style.background = "#fef2f2";
+
+        buttons[question.correct]
+            .style.borderColor = "#16a34a";
+
+        buttons[question.correct]
+            .style.background = "#f0fdf4";
+
+    }
+
+
+    document.getElementById("scoreDisplay")
+        .textContent =
+        `Punkty: ${quizScore}`;
 
     document.getElementById("nextButton")
         .disabled = false;
 
-    document.getElementById("nextButton")
-        .textContent =
-        currentQuestion === questions.length - 1
-        ? "Zakończ quiz"
-        : "Następne pytanie →";
 }
 
 
-/* =========================
-   NEXT QUESTION
-========================= */
+/* NASTĘPNE PYTANIE */
 
 function nextQuestion() {
 
-    if (selectedAnswer === null) {
-        return;
-    }
+    quizIndex++;
 
-    userAnswers[currentQuestion] =
-        questions[currentQuestion].a[selectedAnswer];
-
-
-    if (
-        selectedAnswer ===
-        questions[currentQuestion].correct
-    ) {
-        score++;
-    }
-
-
-    if (currentQuestion < questions.length - 1) {
-
-        currentQuestion++;
-
-        loadQuestion();
-
-    } else {
+    if (quizIndex >= quizQuestions.length) {
 
         finishQuiz();
 
+        return;
+
     }
+
+    showQuestion();
+
 }
 
 
-/* =========================
-   FINISH
-========================= */
+/* KONIEC QUIZU */
 
-function finishQuiz() {
+async function finishQuiz() {
 
     document.getElementById("quizScreen")
         .style.display = "none";
@@ -1625,118 +2969,1242 @@ function finishQuiz() {
 
     document.getElementById("finalScore")
         .textContent =
-        `${score} / ${questions.length}`;
+        `${quizScore} / ${quizQuestions.length}`;
 
 
     let message = "";
 
-    if (score === 25) {
-        message = "Perfekcyjnie! 🇫🇷🏆 Znasz Francję świetnie!";
+    const percentage =
+        quizScore / quizQuestions.length;
+
+    if (percentage >= .9) {
+
+        message =
+            "Fantastycznie! 🇫🇷 Doskonale znasz Francję!";
+
+    } else if (percentage >= .7) {
+
+        message =
+            "Świetny wynik! Bardzo dobrze! 🥐";
+
+    } else if (percentage >= .5) {
+
+        message =
+            "Dobry wynik! Jeszcze trochę nauki i będzie idealnie!";
+
+    } else {
+
+        message =
+            "Nieźle! Teraz już wiesz, czego warto się pouczyć. 🇫🇷";
+
     }
-    else if (score >= 20) {
-        message = "Świetny wynik! Bardzo dobrze znasz Francję.";
-    }
-    else if (score >= 15) {
-        message = "Dobry wynik! Masz solidną wiedzę o Francji.";
-    }
-    else if (score >= 10) {
-        message = "Nieźle! Jeszcze trochę nauki i będzie świetnie.";
-    }
-    else {
-        message = "Spróbuj ponownie i popraw swój wynik!";
-    }
+
 
     document.getElementById("resultMessage")
         .textContent = message;
 
 
-    saveResult();
+    await saveRanking();
+
 }
 
 
-/* =========================
-   SAVE TO GOOGLE SHEETS
-========================= */
+/* =====================================================
+   SUPABASE RANKING
+===================================================== */
 
-function saveResult() {
+const SUPABASE_URL =
+    "https://chgboaqfjiqwbsnsdnjp.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_9MQlL4EvX2jct3grNQj2ZQ_OudF3vJE";
+
+const RANKING_API =
+    `${SUPABASE_URL}/rest/v1/ranking`;
+
+
+async function saveRanking() {
 
     const status =
         document.getElementById("saveStatus");
 
     status.textContent =
-        "⏳ Zapisywanie wyniku...";
+        "Zapisywanie wyniku…";
 
 
-    const data =
-        new URLSearchParams();
-
-    data.append("firstName", firstName);
-    data.append("lastName", lastName);
-    data.append("score", `${score}/${questions.length}`);
+    const name =
+        `${quizFirstName} ${quizLastName}`.trim();
 
 
-    for (let i = 0; i < 25; i++) {
+    try {
 
-        data.append(
-            `q${i + 1}`,
-            userAnswers[i] || ""
+        const response =
+            await fetch(RANKING_API, {
+
+                method: "POST",
+
+                headers: {
+
+                    "apikey": SUPABASE_KEY,
+
+                    "Authorization":
+                        `Bearer ${SUPABASE_KEY}`,
+
+                    "Content-Type":
+                        "application/json",
+
+                    "Prefer":
+                        "return=minimal"
+
+                },
+
+                body: JSON.stringify({
+
+                    name: name,
+
+                    score: quizScore
+
+                })
+
+            });
+
+
+        if (!response.ok) {
+
+            throw new Error("Błąd zapisu");
+
+        }
+
+
+        status.textContent =
+            "✅ Wynik został zapisany w rankingu!";
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        status.textContent =
+            "⚠️ Nie udało się zapisać wyniku.";
+
+    }
+
+}
+
+
+/* ŁADOWANIE RANKINGU */
+
+async function loadRanking() {
+
+    const list =
+        document.getElementById("rankingList");
+
+    const empty =
+        document.getElementById("emptyRanking");
+
+
+    list.innerHTML =
+        "<div class='empty-ranking'>Ładowanie…</div>";
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${RANKING_API}?select=*&order=score.desc,created_at.asc`,
+                {
+
+                    headers: {
+
+                        "apikey": SUPABASE_KEY,
+
+                        "Authorization":
+                            `Bearer ${SUPABASE_KEY}`
+
+                    }
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error("Błąd rankingu");
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        list.innerHTML = "";
+
+
+        if (!data.length) {
+
+            empty.style.display = "block";
+
+            return;
+
+        }
+
+
+        empty.style.display = "none";
+
+
+        data.forEach(function(row,index) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "ranking-row";
+
+
+            const initial =
+                row.name
+                    ? row.name.charAt(0).toUpperCase()
+                    : "?";
+
+
+            item.innerHTML = `
+
+                <span class="ranking-position">
+                    ${index + 1}
+                </span>
+
+                <span class="ranking-name">
+
+                    <span class="ranking-avatar">
+                        ${initial}
+                    </span>
+
+                    ${escapeHtml(row.name)}
+
+                </span>
+
+                <span class="ranking-score">
+                    ${row.score} pkt
+                </span>
+
+            `;
+
+
+            list.appendChild(item);
+
+        });
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        list.innerHTML =
+            "<div class='empty-ranking'>Nie udało się pobrać rankingu.</div>";
+
+    }
+
+}
+
+
+/* Ochrona tekstu */
+
+function escapeHtml(text) {
+
+    return String(text || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   RESET QUIZU
+===================================================== */
+
+function resetQuiz() {
+
+    quizIndex = 0;
+    quizScore = 0;
+
+    const quizStart =
+        document.getElementById("quizStart");
+
+    const quizScreen =
+        document.getElementById("quizScreen");
+
+    const resultScreen =
+        document.getElementById("resultScreen");
+
+
+    if (quizStart)
+        quizStart.style.display = "block";
+
+    if (quizScreen)
+        quizScreen.style.display = "none";
+
+    if (resultScreen)
+        resultScreen.style.display = "none";
+
+}
+
+
+/* =====================================================
+   GRY — FRANCUSKI → POLSKI
+===================================================== */
+
+const wordsQuestions = [
+
+    {
+        word:"Bonjour",
+        answers:["Dzień dobry","Dziękuję","Do widzenia","Proszę"],
+        correct:0
+    },
+
+    {
+        word:"Merci",
+        answers:["Dziękuję","Cześć","Dom","Kot"],
+        correct:0
+    },
+
+    {
+        word:"Au revoir",
+        answers:["Do widzenia","Dzień dobry","Tak","Nie"],
+        correct:0
+    },
+
+    {
+        word:"Maison",
+        answers:["Dom","Szkoła","Samochód","Zamek"],
+        correct:0
+    },
+
+    {
+        word:"École",
+        answers:["Szkoła","Książka","Przyjaciel","Chleb"],
+        correct:0
+    },
+
+    {
+        word:"Chat",
+        answers:["Kot","Pies","Koń","Ptak"],
+        correct:0
+    },
+
+    {
+        word:"Chien",
+        answers:["Pies","Kot","Ryba","Koń"],
+        correct:0
+    },
+
+    {
+        word:"Pain",
+        answers:["Chleb","Ser","Woda","Jabłko"],
+        correct:0
+    },
+
+    {
+        word:"Eau",
+        answers:["Woda","Mleko","Sok","Kawa"],
+        correct:0
+    },
+
+    {
+        word:"Fromage",
+        answers:["Ser","Chleb","Masło","Mięso"],
+        correct:0
+    },
+
+    {
+        word:"Pomme",
+        answers:["Jabłko","Gruszka","Pomarańcza","Banan"],
+        correct:0
+    },
+
+    {
+        word:"Livre",
+        answers:["Książka","Zeszyt","Długopis","Stół"],
+        correct:0
+    },
+
+    {
+        word:"Ami",
+        answers:["Przyjaciel","Nauczyciel","Brat","Sąsiad"],
+        correct:0
+    },
+
+    {
+        word:"Voiture",
+        answers:["Samochód","Pociąg","Rower","Samolot"],
+        correct:0
+    },
+
+    {
+        word:"Château",
+        answers:["Zamek","Kościół","Dom","Most"],
+        correct:0
+    }
+
+];
+
+
+let wordsIndex = 0;
+let wordsScore = 0;
+let wordsTimer = null;
+
+
+/* START */
+
+function startWordsGame() {
+
+    wordsIndex = 0;
+    wordsScore = 0;
+
+    document.getElementById("gamesMenu")
+        .style.display = "none";
+
+    document.getElementById("wordsGame")
+        .style.display = "block";
+
+    document.getElementById("franceGame")
+        .style.display = "none";
+
+    showWordsQuestion();
+
+}
+
+
+/* PYTANIE */
+
+function showWordsQuestion() {
+
+    const q =
+        wordsQuestions[wordsIndex];
+
+
+    document.getElementById("wordsProgress")
+        .textContent =
+        `${wordsIndex + 1} / ${wordsQuestions.length}`;
+
+
+    document.getElementById("wordsScore")
+        .textContent =
+        `Punkty: ${wordsScore}`;
+
+
+    document.getElementById("wordsProgressBar")
+        .style.width =
+        `${((wordsIndex + 1) / wordsQuestions.length) * 100}%`;
+
+
+    document.getElementById("wordsQuestion")
+        .textContent = q.word;
+
+
+    document.getElementById("wordsFeedback")
+        .textContent = "";
+
+
+    document.getElementById("wordsLoading")
+        .style.display = "none";
+
+
+    const answers =
+        document.getElementById("wordsAnswers");
+
+    answers.innerHTML = "";
+
+
+    q.answers.forEach(function(answer,index) {
+
+        const btn =
+            document.createElement("button");
+
+        btn.className = "game-answer";
+
+        btn.textContent = answer;
+
+        btn.onclick =
+            function() {
+
+                answerWords(index,btn);
+
+            };
+
+        answers.appendChild(btn);
+
+    });
+
+}
+
+
+/* ODPOWIEDŹ */
+
+function answerWords(index,button) {
+
+    clearTimeout(wordsTimer);
+
+
+    const q =
+        wordsQuestions[wordsIndex];
+
+
+    const buttons =
+        document.querySelectorAll(
+            "#wordsAnswers .game-answer"
         );
+
+
+    buttons.forEach(function(btn) {
+
+        btn.disabled = true;
+
+    });
+
+
+    if (index === q.correct) {
+
+        wordsScore++;
+
+        button.classList.add("correct");
+
+        document.getElementById("wordsFeedback")
+            .textContent =
+            "✅ Dobrze!";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        buttons[q.correct]
+            .classList.add("correct");
+
+        document.getElementById("wordsFeedback")
+            .textContent =
+            "❌ Nie tym razem!";
 
     }
 
 
-    fetch(SCRIPT_URL, {
+    document.getElementById("wordsScore")
+        .textContent =
+        `Punkty: ${wordsScore}`;
 
-        method: "POST",
 
-        mode: "no-cors",
+    startGameCountdown(
+        "wordsLoading",
+        "wordsCountdown",
+        "wordsLoadingFill",
+        function() {
 
-        headers: {
-            "Content-Type":
-                "application/x-www-form-urlencoded"
-        },
+            wordsIndex++;
 
-        body: data.toString()
+            if (wordsIndex >= wordsQuestions.length) {
 
-    })
-    .then(() => {
+                finishWordsGame();
 
-        status.textContent =
-            "✅ Wynik został zapisany!";
+            } else {
 
-    })
-    .catch(() => {
+                showWordsQuestion();
 
-        status.textContent =
-            "⚠️ Nie udało się potwierdzić zapisu.";
+            }
 
-    });
+        }
+    );
+
 }
 
 
-/* =========================
-   RESTART
-========================= */
+/* WYNIK */
 
-function restartQuiz() {
+function finishWordsGame() {
 
-    document.getElementById("resultScreen")
+    document.getElementById("wordsAnswers")
+        .innerHTML = "";
+
+    document.getElementById("wordsLoading")
         .style.display = "none";
 
-    document.getElementById("startScreen")
+    document.getElementById("wordsQuestion")
+        .textContent = "Koniec gry!";
+
+
+    document.getElementById("wordsFeedback")
+        .textContent = "";
+
+
+    document.getElementById("wordsResult")
         .style.display = "block";
 
-    document.getElementById("firstName")
-        .value = "";
 
-    document.getElementById("lastName")
-        .value = "";
+    document.getElementById("wordsResult")
+        .innerHTML = `
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+        <div class="result-big">
+            🥐 ${wordsScore} / ${wordsQuestions.length}
+        </div>
+
+        <p>
+            Świetny trening francuskich słówek!
+        </p>
+
+        <div style="margin-top:18px">
+
+            <button class="primary-btn"
+                    onclick="startWordsGame()">
+                Zagraj ponownie
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="backToGames()">
+                Wybierz inną grę
+            </button>
+
+        </div>
+    `;
+
 }
+
+
+/* =====================================================
+   GRA — FRANCJA
+===================================================== */
+
+const franceQuestions = [
+
+    {
+        q:"Co jest symbolem Paryża?",
+        answers:["Wieża Eiffla","Big Ben","Koloseum","Akropol"],
+        correct:0
+    },
+
+    {
+        q:"Jaka jest stolica Francji?",
+        answers:["Paryż","Lyon","Nicea","Marsylia"],
+        correct:0
+    },
+
+    {
+        q:"Która rzeka przepływa przez Paryż?",
+        answers:["Sekwana","Loara","Rodan","Garonna"],
+        correct:0
+    },
+
+    {
+        q:"Jakie kolory ma flaga Francji?",
+        answers:[
+            "Niebieski, biały, czerwony",
+            "Zielony, biały, czerwony",
+            "Żółty, biały, niebieski",
+            "Czarny, biały, czerwony"
+        ],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się francuski hymn?",
+        answers:["Marsylianka","Oda do radości","Bella Ciao","Hejnał"],
+        correct:0
+    },
+
+    {
+        q:"W którym roku rozpoczęła się rewolucja francuska?",
+        answers:["1789","1492","1918","1945"],
+        correct:0
+    },
+
+    {
+        q:"Kto był cesarzem Francuzów?",
+        answers:["Napoleon Bonaparte","Juliusz Cezar","Henryk VIII","Karol Wielki"],
+        correct:0
+    },
+
+    {
+        q:"Które miasto słynie z festiwalu filmowego?",
+        answers:["Cannes","Lille","Rouen","Dijon"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się słynny francuski wyścig kolarski?",
+        answers:["Tour de France","Giro","Vuelta","Paris Marathon"],
+        correct:0
+    },
+
+    {
+        q:"Który deser jest francuski?",
+        answers:["Crème brûlée","Tiramisu","Baklava","Churros"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się muzeum w Paryżu?",
+        answers:["Luwr","Prado","Uffizi","Hermitage"],
+        correct:0
+    },
+
+    {
+        q:"Które góry znajdują się we Francji?",
+        answers:["Alpy","Karpacz","Sudety","Ural"],
+        correct:0
+    },
+
+    {
+        q:"Jak nazywa się szybki francuski pociąg?",
+        answers:["TGV","ICE","AVE","Shinkansen"],
+        correct:0
+    },
+
+    {
+        q:"Który region słynie z lawendy?",
+        answers:["Prowansja","Bretania","Normandia","Alzacja"],
+        correct:0
+    },
+
+    {
+        q:"Jaki język jest oficjalnym językiem Francji?",
+        answers:["Francuski","Hiszpański","Włoski","Niemiecki"],
+        correct:0
+    }
+
+];
+
+
+let franceIndex = 0;
+let franceScore = 0;
+let franceTimer = null;
+
+
+/* START */
+
+function startFranceGame() {
+
+    franceIndex = 0;
+    franceScore = 0;
+
+    document.getElementById("gamesMenu")
+        .style.display = "none";
+
+    document.getElementById("wordsGame")
+        .style.display = "none";
+
+    document.getElementById("franceGame")
+        .style.display = "block";
+
+    showFranceQuestion();
+
+}
+
+
+/* PYTANIE */
+
+function showFranceQuestion() {
+
+    const q =
+        franceQuestions[franceIndex];
+
+
+    document.getElementById("franceProgress")
+        .textContent =
+        `${franceIndex + 1} / ${franceQuestions.length}`;
+
+
+    document.getElementById("franceScore")
+        .textContent =
+        `Punkty: ${franceScore}`;
+
+
+    document.getElementById("franceProgressBar")
+        .style.width =
+        `${((franceIndex + 1) / franceQuestions.length) * 100}%`;
+
+
+    document.getElementById("franceQuestion")
+        .textContent = q.q;
+
+
+    document.getElementById("franceFeedback")
+        .textContent = "";
+
+
+    document.getElementById("franceLoading")
+        .style.display = "none";
+
+
+    document.getElementById("franceResult")
+        .style.display = "none";
+
+
+    const answers =
+        document.getElementById("franceAnswers");
+
+    answers.innerHTML = "";
+
+
+    q.answers.forEach(function(answer,index) {
+
+        const btn =
+            document.createElement("button");
+
+        btn.className = "game-answer";
+
+        btn.textContent = answer;
+
+        btn.onclick =
+            function() {
+
+                answerFrance(index,btn);
+
+            };
+
+        answers.appendChild(btn);
+
+    });
+
+}
+
+
+/* ODPOWIEDŹ */
+
+function answerFrance(index,button) {
+
+    clearTimeout(franceTimer);
+
+
+    const q =
+        franceQuestions[franceIndex];
+
+
+    const buttons =
+        document.querySelectorAll(
+            "#franceAnswers .game-answer"
+        );
+
+
+    buttons.forEach(function(btn) {
+
+        btn.disabled = true;
+
+    });
+
+
+    if (index === q.correct) {
+
+        franceScore++;
+
+        button.classList.add("correct");
+
+        document.getElementById("franceFeedback")
+            .textContent =
+            "✅ Dobrze!";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        buttons[q.correct]
+            .classList.add("correct");
+
+        document.getElementById("franceFeedback")
+            .textContent =
+            "❌ Nie tym razem!";
+
+    }
+
+
+    document.getElementById("franceScore")
+        .textContent =
+        `Punkty: ${franceScore}`;
+
+
+    startGameCountdown(
+        "franceLoading",
+        "franceCountdown",
+        "franceLoadingFill",
+        function() {
+
+            franceIndex++;
+
+            if (franceIndex >= franceQuestions.length) {
+
+                finishFranceGame();
+
+            } else {
+
+                showFranceQuestion();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* WYNIK */
+
+function finishFranceGame() {
+
+    document.getElementById("franceAnswers")
+        .innerHTML = "";
+
+    document.getElementById("franceLoading")
+        .style.display = "none";
+
+    document.getElementById("franceQuestion")
+        .textContent =
+        "Koniec gry!";
+
+
+    document.getElementById("franceFeedback")
+        .textContent = "";
+
+
+    document.getElementById("franceResult")
+        .style.display = "block";
+
+
+    document.getElementById("franceResult")
+        .innerHTML = `
+
+        <div class="result-big">
+            🇫🇷 ${franceScore} / ${franceQuestions.length}
+        </div>
+
+        <p>
+            Świetnie! Znasz Francję coraz lepiej!
+        </p>
+
+        <div style="margin-top:18px">
+
+            <button class="primary-btn"
+                    onclick="startFranceGame()">
+                Zagraj ponownie
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="backToGames()">
+                Wybierz inną grę
+            </button>
+
+        </div>
+    `;
+
+}
+
+
+/* =====================================================
+   LICZNIK 3 SEKUND W GRACH
+===================================================== */
+
+function startGameCountdown(
+    loadingId,
+    countdownId,
+    fillId,
+    callback
+) {
+
+    const loading =
+        document.getElementById(loadingId);
+
+    const countdown =
+        document.getElementById(countdownId);
+
+    const fill =
+        document.getElementById(fillId);
+
+
+    loading.style.display = "block";
+
+    countdown.textContent = "3";
+
+    fill.style.transition = "none";
+
+    fill.style.width = "0%";
+
+
+    setTimeout(function() {
+
+        fill.style.transition =
+            "width 3s linear";
+
+        fill.style.width = "100%";
+
+    },30);
+
+
+    let seconds = 3;
+
+
+    const interval =
+        setInterval(function() {
+
+            seconds--;
+
+            if (seconds > 0) {
+
+                countdown.textContent =
+                    seconds;
+
+            } else {
+
+                clearInterval(interval);
+
+                callback();
+
+            }
+
+        },1000);
+
+}
+
+
+/* =====================================================
+   POWRÓT DO WYBORU GIER
+===================================================== */
+
+function backToGames() {
+
+    clearTimeout(wordsTimer);
+    clearTimeout(franceTimer);
+
+    document.getElementById("gamesMenu")
+        .style.display = "grid";
+
+    document.getElementById("wordsGame")
+        .style.display = "none";
+
+    document.getElementById("franceGame")
+        .style.display = "none";
+
+
+    /*
+       RESET — po powrocie gra zaczyna od początku
+    */
+
+    wordsIndex = 0;
+    wordsScore = 0;
+
+    franceIndex = 0;
+    franceScore = 0;
+
+}
+
+
+/* RESET GIER */
+
+function resetGames() {
+
+    clearTimeout(wordsTimer);
+    clearTimeout(franceTimer);
+
+    wordsIndex = 0;
+    wordsScore = 0;
+
+    franceIndex = 0;
+    franceScore = 0;
+
+
+    const menu =
+        document.getElementById("gamesMenu");
+
+    const words =
+        document.getElementById("wordsGame");
+
+    const france =
+        document.getElementById("franceGame");
+
+
+    if (menu)
+        menu.style.display = "grid";
+
+    if (words)
+        words.style.display = "none";
+
+    if (france)
+        france.style.display = "none";
+
+}
+
+
+/* =====================================================
+   100 CIEKAWOSTEK
+===================================================== */
+
+const facts = [
+
+    ["🗼","Paryż","Wieża Eiffla została zbudowana z okazji Wystawy Światowej w 1889 roku."],
+    ["🥐","Kuchnia","Bagietka jest jednym z najbardziej rozpoznawalnych symboli francuskiej kuchni."],
+    ["🎨","Sztuka","Luwr jest jednym z najbardziej znanych muzeów świata."],
+    ["🇫🇷","Symbole","Francuska flaga składa się z trzech pionowych pasów: niebieskiego, białego i czerwonego."],
+    ["🎵","Muzyka","Francuski hymn nosi nazwę „Marsylianka”."],
+    ["🚄","Transport","TGV to francuskie pociągi dużych prędkości."],
+    ["⚽","Sport","Francja jest jednym z najbardziej utytułowanych państw w piłce nożnej."],
+    ["🎾","Sport","Roland-Garros odbywa się w Paryżu."],
+    ["🚴","Sport","Tour de France jest jednym z najbardziej znanych wyścigów kolarskich."],
+    ["🍷","Kuchnia","Francja słynie z licznych regionów winiarskich."],
+    ["🧀","Kuchnia","Francja jest znana z ogromnej różnorodności serów."],
+    ["🏰","Historia","Francja ma wiele słynnych zamków, między innymi Chambord."],
+    ["👑","Historia","Ludwik XIV był znany jako Król Słońce."],
+    ["⚔️","Historia","Napoleon Bonaparte odegrał ogromną rolę w historii Europy."],
+    ["📜","Historia","Rewolucja Francuska rozpoczęła się w 1789 roku."],
+    ["🌊","Geografia","Francja ma dostęp do Oceanu Atlantyckiego."],
+    ["🌊","Geografia","Francja ma również dostęp do Morza Śródziemnego."],
+    ["🏔️","Geografia","Alpy znajdują się między innymi na terytorium Francji."],
+    ["🏔️","Geografia","Pireneje tworzą naturalną granicę między Francją a Hiszpanią."],
+    ["🌊","Geografia","Sekwana przepływa przez centrum Paryża."],
+    ["🗼","Paryż","Paryż jest stolicą Francji."],
+    ["🏛️","Paryż","Łuk Triumfalny znajduje się na Polach Elizejskich."],
+    ["🎨","Paryż","Montmartre jest znaną artystyczną dzielnicą Paryża."],
+    ["⛪","Paryż","Notre-Dame jest jedną z najbardziej znanych katedr Francji."],
+    ["🏛️","Paryż","Pałac Wersalski był rezydencją francuskich monarchów."],
+    ["🌸","Regiony","Prowansja kojarzy się z polami lawendy."],
+    ["🌊","Regiony","Normandia znajduje się na północy Francji."],
+    ["🏘️","Regiony","Alzacja słynie z charakterystycznej architektury."],
+    ["🍷","Regiony","Bordeaux jest jednym z najbardziej znanych regionów winiarskich."],
+    ["🌴","Regiony","Lazurowe Wybrzeże znajduje się nad Morzem Śródziemnym."],
+    ["🥖","Język","„Bonjour” oznacza „dzień dobry”."],
+    ["🙏","Język","„Merci” oznacza „dziękuję”."],
+    ["👋","Język","„Au revoir” oznacza „do widzenia”."],
+    ["❤️","Język","„Je t'aime” oznacza „kocham cię”."],
+    ["👍","Język","„Oui” oznacza „tak”."],
+    ["👎","Język","„Non” oznacza „nie”."],
+    ["📚","Literatura","Victor Hugo napisał „Nędzników”."],
+    ["📚","Literatura","Jules Verne był znanym francuskim pisarzem."],
+    ["📚","Literatura","Alexandre Dumas napisał „Trzech muszkieterów”."],
+    ["🎨","Malarstwo","Claude Monet był jednym z najważniejszych impresjonistów."],
+    ["🎨","Malarstwo","Edgar Degas był związany z impresjonizmem."],
+    ["🎨","Malarstwo","Paul Cézanne miał ogromny wpływ na rozwój nowoczesnego malarstwa."],
+    ["🎬","Kino","Francja ma bardzo bogatą historię kina."],
+    ["🎬","Kino","Bracia Lumière odegrali ważną rolę w początkach kinematografii."],
+    ["🎭","Kultura","Francuski teatr ma wielowiekową tradycję."],
+    ["👗","Moda","Paryż jest jednym z najważniejszych centrów światowej mody."],
+    ["💄","Moda","Francja jest siedzibą wielu znanych domów mody."],
+    ["🥐","Kuchnia","Crème brûlée jest popularnym francuskim deserem."],
+    ["🍰","Kuchnia","Tarte Tatin to znane francuskie ciasto z jabłkami."],
+    ["🥞","Kuchnia","Crêpes to cienkie francuskie naleśniki."],
+    ["🍲","Kuchnia","Coq au vin jest tradycyjnym daniem kuchni francuskiej."],
+    ["🐌","Kuchnia","Escargots to ślimaki przygotowywane jako potrawa."],
+    ["🍲","Kuchnia","Ratatouille jest daniem kojarzonym z kuchnią południowej Francji."],
+    ["🥣","Kuchnia","Zupa cebulowa jest jednym z klasycznych dań kuchni francuskiej."],
+    ["🍮","Kuchnia","Francuska gastronomia słynie z dużej różnorodności deserów."],
+    ["🏰","Zabytki","Mont-Saint-Michel jest jednym z najbardziej charakterystycznych miejsc Francji."],
+    ["🏛️","Zabytki","Pałac Wersalski jest ważnym zabytkiem francuskiej historii."],
+    ["🏰","Zabytki","Château de Chambord jest jednym z najbardziej znanych zamków nad Loarą."],
+    ["🏛️","Zabytki","Pont du Gard jest starożytnym rzymskim akweduktem."],
+    ["🏗️","Architektura","Viaduc de Millau jest jednym z najbardziej imponujących mostów Francji."],
+    ["🌍","Świat","Francja posiada terytoria zamorskie."],
+    ["🌎","Świat","Język francuski jest używany na wielu kontynentach."],
+    ["🇪🇺","Europa","Francja jest jednym z państw założycielskich europejskiej integracji."],
+    ["🏛️","Europa","Francja jest członkiem Unii Europejskiej."],
+    ["🌐","Świat","Francja należy do ważnych państw organizacji międzynarodowych."],
+    ["🏭","Gospodarka","Przemysł jest ważną częścią francuskiej gospodarki."],
+    ["🌾","Rolnictwo","Francja jest jednym z najważniejszych producentów rolnych Europy."],
+    ["✈️","Technologie","Francja ma rozwinięty przemysł lotniczy."],
+    ["🚀","Kosmos","Francja uczestniczy w europejskich programach kosmicznych."],
+    ["🔬","Nauka","Francuscy naukowcy mieli znaczący wpływ na rozwój wielu dziedzin nauki."],
+    ["⚛️","Nauka","Francja posiada rozwinięty sektor badań naukowych."],
+    ["🎓","Edukacja","Francja posiada wiele znanych uczelni."],
+    ["🏫","Edukacja","Francuski system edukacji obejmuje szkoły podstawowe, średnie i wyższe."],
+    ["📖","Edukacja","Francja ma długą tradycję szkolnictwa wyższego."],
+    ["🏛️","Historia","Wersal odegrał ważną rolę w historii monarchii francuskiej."],
+    ["👑","Historia","Ludwik XIV panował przez bardzo długi okres."],
+    ["⚔️","Historia","Napoleon został cesarzem Francuzów w 1804 roku."],
+    ["📜","Historia","Deklaracja Praw Człowieka i Obywatela pochodzi z czasów rewolucji francuskiej."],
+    ["🇫🇷","Symbole","Motto Francji brzmi „Wolność, Równość, Braterstwo”."],
+    ["🇫🇷","Symbole","Francuski hymn nazywa się „La Marseillaise”."],
+    ["🇫🇷","Symbole","Jednym z symboli Republiki Francuskiej jest Marianne."],
+    ["🗼","Paryż","Wieża Eiffla jest jednym z najbardziej rozpoznawalnych zabytków świata."],
+    ["🎨","Paryż","Luwr mieści ogromną kolekcję dzieł sztuki."],
+    ["🌳","Paryż","Paryż posiada liczne parki i ogrody."],
+    ["🚇","Paryż","Paryż ma rozbudowaną sieć metra."],
+    ["☕","Paryż","Kawiarnie są mocno związane z kulturą miejską Paryża."],
+    ["🏔️","Turystyka","Alpy przyciągają turystów zainteresowanych sportami zimowymi."],
+    ["🏖️","Turystyka","Południowa Francja słynie z nadmorskich kurortów."],
+    ["🏰","Turystyka","Dolina Loary jest znana z licznych zamków."],
+    ["🌊","Turystyka","Wybrzeże Atlantyku oferuje wiele plaż i miejsc wypoczynkowych."],
+    ["⛷️","Sport","Francuskie Alpy są popularnym miejscem uprawiania narciarstwa."],
+    ["🏎️","Sport","Francja organizuje wiele dużych wydarzeń sportowych."],
+    ["⚽","Sport","Francuska reprezentacja zdobywała najważniejsze trofea piłkarskie."],
+    ["🎾","Sport","Roland-Garros jest turniejem rozgrywanym na kortach ziemnych."],
+    ["🚴","Sport","Tour de France jest rozgrywany etapami przez kilka tygodni."],
+    ["🌍","Dziedzictwo","Francja posiada wiele obiektów wpisanych na listę UNESCO."],
+    ["🏛️","Dziedzictwo","Francuskie zabytki są ważnym elementem turystyki."],
+    ["🥐","Gastronomia","Francuski posiłek gastronomiczny został wpisany na listę niematerialnego dziedzictwa UNESCO."],
+    ["🎨","Kultura","Francja jest jednym z najważniejszych centrów europejskiej kultury."],
+    ["🎬","Kultura","Cannes jest znane na całym świecie z festiwalu filmowego."],
+    ["🎵","Kultura","Muzyka francuska obejmuje wiele różnych stylów i tradycji."],
+    ["🏰","Historia","Francja posiada wiele średniowiecznych miast i fortyfikacji."],
+    ["🌊","Geografia","Francja posiada różnorodne typy wybrzeży."],
+    ["🌍","Geografia","Francja metropolitalna znajduje się w Europie Zachodniej."],
+    ["🇫🇷","Francja","Francja jest jednym z największych państw Europy Zachodniej."],
+    ["🎉","Kultura","Francuzi obchodzą wiele świąt i wydarzeń związanych z lokalnymi tradycjami."]
+];
+
+
+function drawRandomFact() {
+
+    const fact =
+        facts[Math.floor(Math.random() * facts.length)];
+
+
+    document.getElementById("randomFactIcon")
+        .textContent = fact[0];
+
+    document.getElementById("randomFactCategory")
+        .textContent = fact[1];
+
+    document.getElementById("randomFactTitle")
+        .textContent = "Ciekawostka 🇫🇷";
+
+    document.getElementById("randomFactText")
+        .textContent = fact[2];
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener("DOMContentLoaded",function() {
+
+    /*
+       Na samym początku pokazujemy WYŁĄCZNIE Start.
+    */
+
+    document.querySelectorAll(".section")
+        .forEach(function(section) {
+
+            section.classList.remove("active");
+
+            section.style.display = "none";
+
+        });
+
+
+    const start =
+        document.getElementById("start");
+
+    start.classList.add("active");
+
+    start.style.display = "block";
+
+
+    /*
+       Ranking może zostać pobrany od razu,
+       ale NIE jest wyświetlany.
+    */
+
+    loadRanking();
+
+});
 
 </script>
 
