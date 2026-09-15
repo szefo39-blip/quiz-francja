@@ -1,0 +1,579 @@
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz o Francji 🇫🇷</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0055a4, #ffffff, #ef4135);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: white;
+            width: 100%;
+            max-width: 650px;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #222;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .info {
+            font-size: 13px;
+            color: #777;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #0055a4;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #003f7d;
+        }
+
+        .question {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .answer {
+            display: block;
+            width: 100%;
+            background: #f2f2f2;
+            color: #222;
+            text-align: left;
+            margin-bottom: 12px;
+            border: 2px solid transparent;
+        }
+
+        .answer:hover {
+            background: #e5e5e5;
+        }
+
+        .answer.selected {
+            border-color: #0055a4;
+            background: #dcecff;
+        }
+
+        .progress {
+            margin-bottom: 20px;
+            color: #666;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .result {
+            text-align: center;
+        }
+
+        .score {
+            font-size: 35px;
+            font-weight: bold;
+            margin: 20px;
+            color: #0055a4;
+        }
+
+        #saveStatus {
+            color: #555;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .question {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <!-- START -->
+    <div id="startScreen">
+        <h1>🇫🇷 Quiz o Francji</h1>
+
+        <p class="subtitle">
+            Sprawdź swoją wiedzę o Francji!
+        </p>
+
+        <p class="info">
+            Po zakończeniu quizu zostaną zapisane Twoje 
+            odpowiedzi oraz wynik.
+        </p>
+
+        <input
+            type="text"
+            id="firstName"
+            placeholder="Imię"
+        >
+
+        <input
+            type="text"
+            id="lastName"
+            placeholder="Nazwisko"
+        >
+
+        <button onclick="startQuiz()">
+            Rozpocznij quiz
+        </button>
+    </div>
+
+
+    <!-- QUIZ -->
+    <div id="quizScreen" class="hidden">
+
+        <div class="progress" id="progress"></div>
+
+        <div class="question" id="question"></div>
+
+        <div id="answers"></div>
+
+        <button onclick="nextQuestion()">
+            Dalej →
+        </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+    <div id="resultScreen" class="hidden result">
+
+        <h1>🎉 Quiz zakończony!</h1>
+
+        <p id="resultName"></p>
+
+        <div class="score" id="score"></div>
+
+        <p>Dziękujemy za rozwiązanie quizu!</p>
+
+        <p id="saveStatus">Zapisywanie wyniku...</p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ==========================================
+   ADRES GOOGLE APPS SCRIPT
+   ========================================== */
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbycqRKim7Y761mrvxIdgzfOSpkkxqBOOQt32C_KcFp_26zKcTCO3lpnGMkXB4kS1cbh4w/exec";
+
+
+/* ==========================================
+   PYTANIA
+   ========================================== */
+
+const questions = [
+
+    {
+        question: "Jaka jest stolica Francji?",
+        answers: ["Paryż", "Marsylia", "Lyon", "Nicea"],
+        correct: 0
+    },
+
+    {
+        question: "Jaki słynny zabytek znajduje się w Paryżu?",
+        answers: ["Big Ben", "Wieża Eiffla", "Koloseum", "Akropol"],
+        correct: 1
+    },
+
+    {
+        question: "Jaka waluta obowiązuje we Francji?",
+        answers: ["Funt", "Dolar", "Euro", "Frank"],
+        correct: 2
+    },
+
+    {
+        question: "Jaka jest najdłuższa rzeka Francji?",
+        answers: ["Loara", "Sekwana", "Ren", "Rodan"],
+        correct: 0
+    },
+
+    {
+        question: "Jak nazywa się francuski hymn?",
+        answers: [
+            "La Marseillaise",
+            "Ode to Joy",
+            "God Save the King",
+            "Bella Ciao"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Jaki jest najwyższy szczyt Francji?",
+        answers: [
+            "Mont Blanc",
+            "Matterhorn",
+            "Grossglockner",
+            "Triglav"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Który ocean znajduje się na zachód od Francji?",
+        answers: [
+            "Ocean Indyjski",
+            "Ocean Spokojny",
+            "Ocean Atlantycki",
+            "Ocean Arktyczny"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "Jak nazywa się słynne muzeum w Paryżu?",
+        answers: ["Luwr", "Prado", "Uffizi", "Hermitage"],
+        correct: 0
+    },
+
+    {
+        question: "Które miasto słynie z festiwalu filmowego?",
+        answers: ["Cannes", "Lille", "Rouen", "Dijon"],
+        correct: 0
+    },
+
+    {
+        question: "Jaki kolor znajduje się po lewej stronie francuskiej flagi?",
+        answers: ["Czerwony", "Biały", "Niebieski", "Żółty"],
+        correct: 2
+    },
+
+    {
+        question: "Jak nazywa się słynny pałac pod Paryżem?",
+        answers: [
+            "Pałac Buckingham",
+            "Pałac Wersalski",
+            "Pałac Schönbrunn",
+            "Pałac Królewski w Madrycie"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "Które morze znajduje się na południu Francji?",
+        answers: [
+            "Morze Bałtyckie",
+            "Morze Śródziemne",
+            "Morze Północne",
+            "Morze Czarne"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "Z czego szczególnie słynie region Bordeaux?",
+        answers: [
+            "Wina",
+            "Fiordy",
+            "Pustynie",
+            "Wulkany"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Jak nazywa się popularny francuski wypiek?",
+        answers: [
+            "Croissant",
+            "Pretzel",
+            "Donut",
+            "Bagel"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Jakim językiem urzędowym posługuje się Francja?",
+        answers: [
+            "Hiszpańskim",
+            "Włoskim",
+            "Francuskim",
+            "Niemieckim"
+        ],
+        correct: 2
+    }
+
+];
+
+
+/* ==========================================
+   ZMIENNE
+   ========================================== */
+
+let currentQuestion = 0;
+let score = 0;
+let selectedAnswer = null;
+
+let firstName = "";
+let lastName = "";
+
+// Tutaj zapisujemy odpowiedzi użytkownika
+let userAnswers = [];
+
+
+/* ==========================================
+   START QUIZU
+   ========================================== */
+
+function startQuiz() {
+
+    firstName =
+        document.getElementById("firstName").value.trim();
+
+    lastName =
+        document.getElementById("lastName").value.trim();
+
+    if (firstName === "" || lastName === "") {
+        alert("Wpisz imię i nazwisko.");
+        return;
+    }
+
+    document
+        .getElementById("startScreen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("quizScreen")
+        .classList.remove("hidden");
+
+    showQuestion();
+}
+
+
+/* ==========================================
+   WYŚWIETLANIE PYTANIA
+   ========================================== */
+
+function showQuestion() {
+
+    selectedAnswer = null;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("progress").textContent =
+        `Pytanie ${currentQuestion + 1} / ${questions.length}`;
+
+    document.getElementById("question").textContent =
+        q.question;
+
+    const answersContainer =
+        document.getElementById("answers");
+
+    answersContainer.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.textContent = answer;
+
+        button.classList.add("answer");
+
+        button.onclick = function () {
+
+            selectedAnswer = index;
+
+            // Zapamiętujemy odpowiedź
+            userAnswers[currentQuestion] = answer;
+
+            document
+                .querySelectorAll(".answer")
+                .forEach(btn =>
+                    btn.classList.remove("selected")
+                );
+
+            button.classList.add("selected");
+        };
+
+        answersContainer.appendChild(button);
+
+    });
+}
+
+
+/* ==========================================
+   NASTĘPNE PYTANIE
+   ========================================== */
+
+function nextQuestion() {
+
+    if (selectedAnswer === null) {
+        alert("Wybierz odpowiedź.");
+        return;
+    }
+
+    if (
+        selectedAnswer ===
+        questions[currentQuestion].correct
+    ) {
+        score++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        finishQuiz();
+
+    }
+}
+
+
+/* ==========================================
+   KONIEC QUIZU + WYSŁANIE DO GOOGLE SHEETS
+   ========================================== */
+
+async function finishQuiz() {
+
+    document
+        .getElementById("quizScreen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("resultScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("resultName").textContent =
+        `${firstName} ${lastName}`;
+
+    document.getElementById("score").textContent =
+        `${score} / ${questions.length}`;
+
+
+    const saveStatus =
+        document.getElementById("saveStatus");
+
+    saveStatus.textContent =
+        "Zapisywanie wyniku...";
+
+
+    /* Tworzymy dane do wysłania */
+
+    const formData = new URLSearchParams();
+
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append(
+        "score",
+        `${score} / ${questions.length}`
+    );
+
+
+    // Wysyłamy wszystkie 15 odpowiedzi
+    userAnswers.forEach((answer, index) => {
+
+        formData.append(
+            `q${index + 1}`,
+            answer || ""
+        );
+
+    });
+
+
+    /* Wysyłamy dane do Google Apps Script */
+
+    try {
+
+        await fetch(SCRIPT_URL, {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+                "Content-Type":
+                    "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+
+            body: formData
+
+        });
+
+        saveStatus.textContent =
+            "✅ Wynik został zapisany!";
+
+    } catch (error) {
+
+        console.error(error);
+
+        saveStatus.textContent =
+            "❌ Nie udało się zapisać wyniku.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
