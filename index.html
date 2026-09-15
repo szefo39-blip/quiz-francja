@@ -1,383 +1,1212 @@
-```html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz o Francji 🇫🇷</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>Bonjour France 🇫🇷</title>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0055a4, #ffffff, #ef4135);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+<style>
 
-        .quiz-container {
-            background: white;
-            width: 100%;
-            max-width: 650px;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
 
-        h1 {
-            text-align: center;
-            margin-top: 0;
-            color: #222;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
+body {
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(35, 67, 128, .12), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(210, 35, 42, .10), transparent 30%),
+        #f7f8fc;
+    color: #111827;
+    min-height: 100vh;
+}
 
-        .info {
-            font-size: 13px;
-            color: #777;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+/* =========================
+   NAVBAR
+========================= */
 
-        input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-        }
+.navbar {
+    width: 100%;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: #0055a4;
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.nav-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        button:hover {
-            background: #003f7d;
-        }
+.logo {
+    font-weight: 800;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
 
-        .question {
-            font-size: 21px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+.flag {
+    width: 28px;
+    height: 19px;
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
+}
 
-        .answer {
-            display: block;
-            width: 100%;
-            background: #f2f2f2;
-            color: #222;
-            text-align: left;
-            margin-bottom: 12px;
-            border: 2px solid transparent;
-        }
+.flag span {
+    flex: 1;
+}
 
-        .answer:hover {
-            background: #e5e5e5;
-        }
+.blue {
+    background: #1d4ed8;
+}
 
-        .answer.selected {
-            border-color: #0055a4;
-            background: #dcecff;
-        }
+.white {
+    background: white;
+}
 
-        .progress {
-            margin-bottom: 20px;
-            color: #666;
-            text-align: center;
-        }
+.red {
+    background: #ef233c;
+}
 
-        .hidden {
-            display: none;
-        }
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
 
-        .result {
-            text-align: center;
-        }
+.nav-links button {
+    border: none;
+    background: transparent;
+    padding: 9px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #64748b;
+    transition: .2s;
+}
 
-        .score {
-            font-size: 35px;
-            font-weight: bold;
-            margin: 20px;
-            color: #0055a4;
-        }
+.nav-links button:hover,
+.nav-links button.active {
+    background: #eef2ff;
+    color: #1d4ed8;
+}
 
-        #saveStatus {
-            color: #555;
-            font-size: 14px;
-        }
+/* =========================
+   MAIN
+========================= */
 
-        @media (max-width: 600px) {
-            .quiz-container {
-                padding: 22px;
-            }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 22px 70px;
+}
 
-            h1 {
-                font-size: 27px;
-            }
+.section {
+    display: none;
+    animation: fadeIn .35s ease;
+}
 
-            .question {
-                font-size: 19px;
-            }
-        }
-    </style>
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: .98;
+    margin-bottom: 25px;
+}
+
+.hero-text h1 span {
+    color: #1d4ed8;
+}
+
+.hero-text p {
+    color: #64748b;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 15px 23px;
+    border-radius: 13px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.primary-btn {
+    background: #1d4ed8;
+    color: white;
+    box-shadow: 0 10px 25px rgba(29,78,216,.25);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    background: #1e40af;
+}
+
+.secondary-btn {
+    background: white;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+}
+
+.secondary-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   FRANCE CARD
+========================= */
+
+.france-card {
+    background: white;
+    border-radius: 30px;
+    padding: 25px;
+    box-shadow: 0 25px 70px rgba(15,23,42,.10);
+    position: relative;
+    overflow: hidden;
+}
+
+.france-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #ef233c;
+    opacity: .08;
+    border-radius: 50%;
+    right: -60px;
+    top: -60px;
+}
+
+.big-flag {
+    height: 280px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.big-flag div {
+    flex: 1;
+}
+
+.card-bottom {
+    padding-top: 22px;
+}
+
+.card-bottom h3 {
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+.card-bottom p {
+    color: #64748b;
+}
+
+/* =========================
+   INFO CARDS
+========================= */
+
+.page-title {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.page-subtitle {
+    color: #64748b;
+    margin-bottom: 35px;
+    font-size: 17px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.info-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 25px;
+    transition: .25s;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(15,23,42,.08);
+}
+
+.info-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    margin-bottom: 9px;
+}
+
+.info-card p {
+    color: #64748b;
+    line-height: 1.65;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-container {
+    max-width: 760px;
+    margin: auto;
+}
+
+.quiz-header {
+    margin-bottom: 25px;
+}
+
+.quiz-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.progress {
+    width: 100%;
+    height: 9px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 4%;
+    background: linear-gradient(90deg, #1d4ed8, #ef233c);
+    transition: width .35s;
+}
+
+.quiz-card {
+    background: white;
+    border-radius: 25px;
+    padding: 35px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 20px 60px rgba(15,23,42,.08);
+}
+
+.question {
+    font-size: 27px;
+    line-height: 1.3;
+    margin-bottom: 28px;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer {
+    width: 100%;
+    text-align: left;
+    padding: 17px;
+    border-radius: 14px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.answer:hover {
+    border-color: #1d4ed8;
+    background: #f8faff;
+    transform: translateX(3px);
+}
+
+.answer.selected {
+    background: #eff6ff;
+    border-color: #1d4ed8;
+}
+
+.next-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: none;
+    background: #111827;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.next-btn:hover {
+    background: #1d4ed8;
+}
+
+.next-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+/* =========================
+   START
+========================= */
+
+.start-card {
+    max-width: 550px;
+    margin: 30px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(15,23,42,.08);
+}
+
+.start-card h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.start-card p {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 4px rgba(29,78,216,.08);
+}
+
+/* =========================
+   RESULT
+========================= */
+
+.result-card {
+    max-width: 650px;
+    margin: 60px auto;
+    background: white;
+    border-radius: 28px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(15,23,42,.10);
+}
+
+.result-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.result-card h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+}
+
+.score {
+    font-size: 64px;
+    font-weight: 800;
+    color: #1d4ed8;
+    margin: 15px 0;
+}
+
+.save-status {
+    margin: 15px 0 25px;
+    color: #64748b;
+}
+
+/* =========================
+   FACTS
+========================= */
+
+.fact {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 14px;
+    border: 1px solid #e5e7eb;
+}
+
+.fact strong {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 18px;
+}
+
+.fact p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-text p {
+        margin: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        overflow-x: auto;
+    }
+
+    .nav-links button {
+        white-space: nowrap;
+    }
+
+    .big-flag {
+        height: 210px;
+    }
+
+    .quiz-card {
+        padding: 23px;
+    }
+
+    .question {
+        font-size: 23px;
+    }
+
+    .page-title {
+        font-size: 38px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="quiz-container">
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <!-- START -->
-    <div id="startScreen">
-        <h1>🇫🇷 Quiz o Francji</h1>
+<nav class="navbar">
 
-        <p class="subtitle">
-            Sprawdź swoją wiedzę o Francji!
-        </p>
+<div class="nav-inner">
 
-        <p class="info">
-            Po zakończeniu quizu zostaną zapisane Twoje 
-            odpowiedzi oraz wynik.
-        </p>
+<div class="logo">
 
-        <input
-            type="text"
-            id="firstName"
-            placeholder="Imię"
-        >
+<div class="flag">
+<span class="blue"></span>
+<span class="white"></span>
+<span class="red"></span>
+</div>
 
-        <input
-            type="text"
-            id="lastName"
-            placeholder="Nazwisko"
-        >
+Bonjour France
 
-        <button onclick="startQuiz()">
-            Rozpocznij quiz
-        </button>
-    </div>
+</div>
 
+<div class="nav-links">
 
-    <!-- QUIZ -->
-    <div id="quizScreen" class="hidden">
+<button class="active" onclick="showSection('home', this)">
+Start
+</button>
 
-        <div class="progress" id="progress"></div>
+<button onclick="showSection('quiz', this)">
+Quiz
+</button>
 
-        <div class="question" id="question"></div>
+<button onclick="showSection('info', this)">
+O Francji
+</button>
 
-        <div id="answers"></div>
+<button onclick="showSection('facts', this)">
+Ciekawostki
+</button>
 
-        <button onclick="nextQuestion()">
-            Dalej →
-        </button>
+</div>
 
-    </div>
+</div>
+
+</nav>
 
 
-    <!-- RESULT -->
-    <div id="resultScreen" class="hidden result">
+<main class="container">
 
-        <h1>🎉 Quiz zakończony!</h1>
 
-        <p id="resultName"></p>
+<!-- =========================
+     HOME
+========================= -->
 
-        <div class="score" id="score"></div>
+<section id="home" class="section active">
 
-        <p>Dziękujemy za rozwiązanie quizu!</p>
+<div class="hero">
 
-        <p id="saveStatus">Zapisywanie wyniku...</p>
+<div class="hero-text">
 
-    </div>
+<h1>
+Bonjour,<br>
+<span>France!</span>
+</h1>
+
+<p>
+Sprawdź swoją wiedzę o jednym z najbardziej fascynujących
+krajów Europy. Historia, geografia, kultura i ciekawostki
+czekają na Ciebie w 25 pytaniach.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary-btn"
+onclick="showSection('quiz')">
+🇫🇷 Rozpocznij quiz
+</button>
+
+<button class="secondary-btn"
+onclick="showSection('info')">
+Poznaj Francję
+</button>
+
+</div>
 
 </div>
 
 
+<div class="france-card">
+
+<div class="big-flag">
+<div class="blue"></div>
+<div class="white"></div>
+<div class="red"></div>
+</div>
+
+<div class="card-bottom">
+
+<h3>La France</h3>
+
+<p>
+Kraj sztuki, historii, mody, kuchni i niezwykłych krajobrazów.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     QUIZ START
+========================= -->
+
+<section id="quiz" class="section">
+
+<div id="startScreen" class="start-card">
+
+<h2>Gotowy?</h2>
+
+<p>
+Podaj swoje dane i rozpocznij 25-pytaniowy quiz
+o Francji.
+</p>
+
+<input
+id="firstName"
+class="input"
+placeholder="Imię"
+>
+
+<input
+id="lastName"
+class="input"
+placeholder="Nazwisko"
+>
+
+<button
+class="primary-btn"
+style="width:100%; margin-top:8px;"
+onclick="startQuiz()"
+>
+Rozpocznij quiz →
+</button>
+
+</div>
+
+
+<div
+id="quizScreen"
+class="quiz-container"
+style="display:none;"
+>
+
+<div class="quiz-header">
+
+<div class="quiz-top">
+
+<span id="questionNumber">
+Pytanie 1 / 25
+</span>
+
+<span id="scoreDisplay">
+Wynik: 0
+</span>
+
+</div>
+
+<div class="progress">
+
+<div
+id="progressBar"
+class="progress-bar"
+></div>
+
+</div>
+
+</div>
+
+
+<div class="quiz-card">
+
+<div
+id="question"
+class="question"
+>
+</div>
+
+<div
+id="answers"
+class="answers"
+></div>
+
+<button
+id="nextButton"
+class="next-btn"
+disabled
+onclick="nextQuestion()"
+>
+Wybierz odpowiedź
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="resultScreen"
+class="result-card"
+style="display:none;"
+>
+
+<div class="result-icon">
+🇫🇷
+</div>
+
+<h2>Quiz ukończony!</h2>
+
+<div
+id="finalScore"
+class="score"
+>
+0 / 25
+</div>
+
+<p id="resultMessage"></p>
+
+<div
+id="saveStatus"
+class="save-status"
+>
+Zapisywanie wyniku...
+</div>
+
+<button
+class="primary-btn"
+onclick="restartQuiz()"
+>
+Spróbuj ponownie
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<section id="info" class="section">
+
+<h2 class="page-title">
+Francja w pigułce 🇫🇷
+</h2>
+
+<p class="page-subtitle">
+Najważniejsze informacje, które warto znać.
+</p>
+
+<div class="cards">
+
+<div class="info-card">
+<div class="info-icon">🏛️</div>
+<h3>Stolica</h3>
+<p>
+Stolicą Francji jest Paryż – jedno z najbardziej
+znanych miast Europy.
+</p>
+</div>
+
+<div class="info-card">
+<div class="info-icon">💶</div>
+<h3>Waluta</h3>
+<p>
+Francja należy do strefy euro. Oficjalną walutą
+jest euro (€).
+</p>
+</div>
+
+<div class="info-card">
+<div class="info-icon">🗣️</div>
+<h3>Język</h3>
+<p>
+Językiem urzędowym jest język francuski.
+</p>
+</div>
+
+<div class="info-card">
+<div class="info-icon">🏔️</div>
+<h3>Najwyższy szczyt</h3>
+<p>
+Mont Blanc ma około 4809 metrów wysokości
+i znajduje się w Alpach.
+</p>
+</div>
+
+<div class="info-card">
+<div class="info-icon">🌊</div>
+<h3>Morza i oceany</h3>
+<p>
+Francja ma dostęp m.in. do Oceanu Atlantyckiego,
+Morza Śródziemnego oraz Morza Północnego.
+</p>
+</div>
+
+<div class="info-card">
+<div class="info-icon">🗺️</div>
+<h3>Regiony</h3>
+<p>
+Francja metropolitalna jest podzielona na wiele
+regionów, m.in. Normandię, Bretanię czy Nową Akwitanię.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FACTS
+========================= -->
+
+<section id="facts" class="section">
+
+<h2 class="page-title">
+Ciekawostki 💡
+</h2>
+
+<p class="page-subtitle">
+Kilka rzeczy, które mogą Cię zaskoczyć.
+</p>
+
+<div class="fact">
+
+<strong>🥐 Croissant nie powstał we Francji</strong>
+
+<p>
+Jego historia wiąże się z Austrią, a dopiero później
+stał się jednym z symboli francuskiej kuchni.
+</p>
+
+</div>
+
+
+<div class="fact">
+
+<strong>🗼 Wieża Eiffla miała być tymczasowa</strong>
+
+<p>
+Wieża została zbudowana z okazji Wystawy Światowej
+w 1889 roku.
+</p>
+
+</div>
+
+
+<div class="fact">
+
+<strong>🎬 Cannes i świat filmu</strong>
+
+<p>
+Cannes słynie z jednego z najbardziej prestiżowych
+festiwali filmowych na świecie.
+</p>
+
+</div>
+
+
+<div class="fact">
+
+<strong>👑 Ludwik XIV</strong>
+
+<p>
+Ludwik XIV był znany jako „Król Słońce” i jest jednym
+z najbardziej rozpoznawalnych francuskich monarchów.
+</p>
+
+</div>
+
+
+<div class="fact">
+
+<strong>🍷 Bordeaux</strong>
+
+<p>
+Region Bordeaux jest znany na całym świecie
+z produkcji wina.
+</p>
+
+</div>
+
+
+<div class="fact">
+
+<strong>🏝️ Korsyka</strong>
+
+<p>
+Korsyka jest największą wyspą należącą do Francji
+metropolitalnej.
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+🇫🇷 Bonjour France • Quiz wiedzy o Francji
+</footer>
+
+
 <script>
 
-/* ==========================================
-   ADRES GOOGLE APPS SCRIPT
-   ========================================== */
+/* =========================
+   APPS SCRIPT
+========================= */
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbycqRKim7Y761mrvxIdgzfOSpkkxqBOOQt32C_KcFp_26zKcTCO3lpnGMkXB4kS1cbh4w/exec";
+"https://script.google.com/macros/s/AKfycbyURUlUJv8Tq1K8Tv-7bwv6IwUaZJhWX_0p3DUyyr_UKLLRCeOonU0XhOymJ3BLASxnFg/exec";
 
 
-/* ==========================================
-   PYTANIA
-   ========================================== */
+/* =========================
+   QUESTIONS
+========================= */
 
 const questions = [
 
-    {
-        question: "Jaka jest stolica Francji?",
-        answers: ["Paryż", "Marsylia", "Lyon", "Nicea"],
-        correct: 0
-    },
+{
+q: "Jaka jest stolica Francji?",
+a: ["Lyon", "Paryż", "Marsylia", "Nicea"],
+correct: 1
+},
 
-    {
-        question: "Jaki słynny zabytek znajduje się w Paryżu?",
-        answers: ["Big Ben", "Wieża Eiffla", "Koloseum", "Akropol"],
-        correct: 1
-    },
+{
+q: "Który słynny zabytek znajduje się w Paryżu?",
+a: ["Big Ben", "Koloseum", "Wieża Eiffla", "Akropol"],
+correct: 2
+},
 
-    {
-        question: "Jaka waluta obowiązuje we Francji?",
-        answers: ["Funt", "Dolar", "Euro", "Frank"],
-        correct: 2
-    },
+{
+q: "Jaka waluta obowiązuje we Francji?",
+a: ["Frank", "Euro", "Funt", "Korona"],
+correct: 1
+},
 
-    {
-        question: "Jaka jest najdłuższa rzeka Francji?",
-        answers: ["Loara", "Sekwana", "Ren", "Rodan"],
-        correct: 0
-    },
+{
+q: "Jaka jest najdłuższa rzeka Francji?",
+a: ["Sekwana", "Rodan", "Loara", "Garonna"],
+correct: 2
+},
 
-    {
-        question: "Jak nazywa się francuski hymn?",
-        answers: [
-            "La Marseillaise",
-            "Ode to Joy",
-            "God Save the King",
-            "Bella Ciao"
-        ],
-        correct: 0
-    },
+{
+q: "Jak nazywa się hymn Francji?",
+a: ["La Marseillaise", "Ode to Joy", "God Save the King", "Bella Ciao"],
+correct: 0
+},
 
-    {
-        question: "Jaki jest najwyższy szczyt Francji?",
-        answers: [
-            "Mont Blanc",
-            "Matterhorn",
-            "Grossglockner",
-            "Triglav"
-        ],
-        correct: 0
-    },
+{
+q: "Jaki jest najwyższy szczyt Francji?",
+a: ["Mont Blanc", "Matterhorn", "Grossglockner", "Mulhacén"],
+correct: 0
+},
 
-    {
-        question: "Który ocean znajduje się na zachód od Francji?",
-        answers: [
-            "Ocean Indyjski",
-            "Ocean Spokojny",
-            "Ocean Atlantycki",
-            "Ocean Arktyczny"
-        ],
-        correct: 2
-    },
+{
+q: "Jaki ocean znajduje się na zachód od Francji?",
+a: ["Ocean Indyjski", "Ocean Atlantycki", "Ocean Arktyczny", "Ocean Spokojny"],
+correct: 1
+},
 
-    {
-        question: "Jak nazywa się słynne muzeum w Paryżu?",
-        answers: ["Luwr", "Prado", "Uffizi", "Hermitage"],
-        correct: 0
-    },
+{
+q: "Które słynne muzeum znajduje się w Paryżu?",
+a: ["Luwr", "Prado", "Uffizi", "Hermitage"],
+correct: 0
+},
 
-    {
-        question: "Które miasto słynie z festiwalu filmowego?",
-        answers: ["Cannes", "Lille", "Rouen", "Dijon"],
-        correct: 0
-    },
+{
+q: "Które miasto słynie z międzynarodowego festiwalu filmowego?",
+a: ["Cannes", "Lille", "Rouen", "Dijon"],
+correct: 0
+},
 
-    {
-        question: "Jaki kolor znajduje się po lewej stronie francuskiej flagi?",
-        answers: ["Czerwony", "Biały", "Niebieski", "Żółty"],
-        correct: 2
-    },
+{
+q: "Jaki kolor znajduje się po lewej stronie francuskiej flagi?",
+a: ["Czerwony", "Biały", "Niebieski", "Żółty"],
+correct: 2
+},
 
-    {
-        question: "Jak nazywa się słynny pałac pod Paryżem?",
-        answers: [
-            "Pałac Buckingham",
-            "Pałac Wersalski",
-            "Pałac Schönbrunn",
-            "Pałac Królewski w Madrycie"
-        ],
-        correct: 1
-    },
+{
+q: "Który słynny pałac znajduje się pod Paryżem?",
+a: ["Wersal", "Buckingham", "Schönbrunn", "Łazienki"],
+correct: 0
+},
 
-    {
-        question: "Które morze znajduje się na południu Francji?",
-        answers: [
-            "Morze Bałtyckie",
-            "Morze Śródziemne",
-            "Morze Północne",
-            "Morze Czarne"
-        ],
-        correct: 1
-    },
+{
+q: "Jakie morze znajduje się na południu Francji?",
+a: ["Bałtyckie", "Śródziemne", "Czarne", "Północne"],
+correct: 1
+},
 
-    {
-        question: "Z czego szczególnie słynie region Bordeaux?",
-        answers: [
-            "Wina",
-            "Fiordy",
-            "Pustynie",
-            "Wulkany"
-        ],
-        correct: 0
-    },
+{
+q: "Z czego szczególnie słynie Bordeaux?",
+a: ["Wina", "Herbaty", "Kawy", "Diamentów"],
+correct: 0
+},
 
-    {
-        question: "Jak nazywa się popularny francuski wypiek?",
-        answers: [
-            "Croissant",
-            "Pretzel",
-            "Donut",
-            "Bagel"
-        ],
-        correct: 0
-    },
+{
+q: "Który wypiek jest jednym z symboli francuskiej kuchni?",
+a: ["Croissant", "Pretzel", "Bagel", "Donut"],
+correct: 0
+},
 
-    {
-        question: "Jakim językiem urzędowym posługuje się Francja?",
-        answers: [
-            "Hiszpańskim",
-            "Włoskim",
-            "Francuskim",
-            "Niemieckim"
-        ],
-        correct: 2
-    }
+{
+q: "Jaki jest język urzędowy Francji?",
+a: ["Hiszpański", "Francuski", "Włoski", "Niemiecki"],
+correct: 1
+},
+
+/* 16 */
+
+{
+q: "Który francuski region słynie z produkcji cydru i znajduje się na północnym zachodzie kraju?",
+a: ["Normandia", "Prowansja", "Alzacja", "Korsyka"],
+correct: 0
+},
+
+{
+q: "W którym regionie Francji znajduje się Bordeaux?",
+a: ["Bretania", "Nowa Akwitania", "Normandia", "Grand Est"],
+correct: 1
+},
+
+{
+q: "W którym roku rozpoczęła się rewolucja francuska?",
+a: ["1689", "1789", "1889", "1815"],
+correct: 1
+},
+
+{
+q: "Kto namalował obraz „Wolność wiodąca lud na barykady”?",
+a: ["Claude Monet", "Eugène Delacroix", "Paul Cézanne", "Edgar Degas"],
+correct: 1
+},
+
+{
+q: "Która wyspa jest największą wyspą należącą do Francji metropolitalnej?",
+a: ["Korsyka", "Réunion", "Martynika", "Gwadelupa"],
+correct: 0
+},
+
+{
+q: "W którym roku powstała V Republika Francuska?",
+a: ["1945", "1950", "1958", "1968"],
+correct: 2
+},
+
+{
+q: "Który francuski król był nazywany „Królem Słońce”?",
+a: ["Ludwik XIII", "Ludwik XIV", "Ludwik XV", "Karol X"],
+correct: 1
+},
+
+{
+q: "Które francuskie miasto jest siedzibą wielu instytucji Unii Europejskiej?",
+a: ["Strasburg", "Bordeaux", "Nicea", "Tuluza"],
+correct: 0
+},
+
+{
+q: "Która góra jest najwyższym szczytem Alp?",
+a: ["Mont Blanc", "Etna", "Ben Nevis", "Triglav"],
+correct: 0
+},
+
+{
+q: "Jak nazywa się słynny pałac będący symbolem absolutyzmu Ludwika XIV?",
+a: ["Wersal", "Luwr", "Fontainebleau", "Chambord"],
+correct: 0
+}
 
 ];
 
 
-/* ==========================================
-   ZMIENNE
-   ========================================== */
+/* =========================
+   VARIABLES
+========================= */
 
 let currentQuestion = 0;
 let score = 0;
 let selectedAnswer = null;
+let userAnswers = [];
 
 let firstName = "";
 let lastName = "";
 
-// Tutaj zapisujemy odpowiedzi użytkownika
-let userAnswers = [];
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showSection(id, button = null) {
+
+    document.querySelectorAll(".section")
+        .forEach(section => {
+            section.classList.remove("active");
+        });
+
+    document.getElementById(id)
+        .classList.add("active");
+
+    document.querySelectorAll(".nav-links button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
 
-/* ==========================================
-   START QUIZU
-   ========================================== */
+/* =========================
+   START QUIZ
+========================= */
 
 function startQuiz() {
 
@@ -387,85 +1216,135 @@ function startQuiz() {
     lastName =
         document.getElementById("lastName").value.trim();
 
-    if (firstName === "" || lastName === "") {
+    if (!firstName || !lastName) {
+
         alert("Wpisz imię i nazwisko.");
+
         return;
     }
 
-    document
-        .getElementById("startScreen")
-        .classList.add("hidden");
+    currentQuestion = 0;
+    score = 0;
+    selectedAnswer = null;
+    userAnswers = [];
 
-    document
-        .getElementById("quizScreen")
-        .classList.remove("hidden");
+    document.getElementById("startScreen")
+        .style.display = "none";
 
-    showQuestion();
+    document.getElementById("quizScreen")
+        .style.display = "block";
+
+    document.getElementById("resultScreen")
+        .style.display = "none";
+
+    loadQuestion();
 }
 
 
-/* ==========================================
-   WYŚWIETLANIE PYTANIA
-   ========================================== */
+/* =========================
+   LOAD QUESTION
+========================= */
 
-function showQuestion() {
+function loadQuestion() {
 
     selectedAnswer = null;
 
-    const q = questions[currentQuestion];
+    const question =
+        questions[currentQuestion];
 
-    document.getElementById("progress").textContent =
+    document.getElementById("question")
+        .textContent = question.q;
+
+    document.getElementById("questionNumber")
+        .textContent =
         `Pytanie ${currentQuestion + 1} / ${questions.length}`;
 
-    document.getElementById("question").textContent =
-        q.question;
+    document.getElementById("scoreDisplay")
+        .textContent =
+        `Wynik: ${score}`;
+
+    const progress =
+        ((currentQuestion + 1) / questions.length) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = progress + "%";
+
 
     const answersContainer =
         document.getElementById("answers");
 
     answersContainer.innerHTML = "";
 
-    q.answers.forEach((answer, index) => {
+
+    question.a.forEach((answer, index) => {
 
         const button =
             document.createElement("button");
 
-        button.textContent = answer;
+        button.className = "answer";
 
-        button.classList.add("answer");
+        button.textContent =
+            `${String.fromCharCode(65 + index)}. ${answer}`;
 
-        button.onclick = function () {
-
-            selectedAnswer = index;
-
-            // Zapamiętujemy odpowiedź
-            userAnswers[currentQuestion] = answer;
-
-            document
-                .querySelectorAll(".answer")
-                .forEach(btn =>
-                    btn.classList.remove("selected")
-                );
-
-            button.classList.add("selected");
-        };
+        button.onclick = () =>
+            selectAnswer(index, button);
 
         answersContainer.appendChild(button);
 
     });
+
+
+    const nextButton =
+        document.getElementById("nextButton");
+
+    nextButton.disabled = true;
+
+    nextButton.textContent =
+        currentQuestion === questions.length - 1
+        ? "Zakończ quiz"
+        : "Następne pytanie →";
 }
 
 
-/* ==========================================
-   NASTĘPNE PYTANIE
-   ========================================== */
+/* =========================
+   SELECT ANSWER
+========================= */
+
+function selectAnswer(index, button) {
+
+    document.querySelectorAll(".answer")
+        .forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+    button.classList.add("selected");
+
+    selectedAnswer = index;
+
+    document.getElementById("nextButton")
+        .disabled = false;
+
+    document.getElementById("nextButton")
+        .textContent =
+        currentQuestion === questions.length - 1
+        ? "Zakończ quiz"
+        : "Następne pytanie →";
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
 
 function nextQuestion() {
 
     if (selectedAnswer === null) {
-        alert("Wybierz odpowiedź.");
         return;
     }
+
+    userAnswers[currentQuestion] =
+        questions[currentQuestion].a[selectedAnswer];
+
 
     if (
         selectedAnswer ===
@@ -474,11 +1353,12 @@ function nextQuestion() {
         score++;
     }
 
-    currentQuestion++;
 
-    if (currentQuestion < questions.length) {
+    if (currentQuestion < questions.length - 1) {
 
-        showQuestion();
+        currentQuestion++;
+
+        loadQuestion();
 
     } else {
 
@@ -488,92 +1368,134 @@ function nextQuestion() {
 }
 
 
-/* ==========================================
-   KONIEC QUIZU + WYSŁANIE DO GOOGLE SHEETS
-   ========================================== */
+/* =========================
+   FINISH
+========================= */
 
-async function finishQuiz() {
+function finishQuiz() {
 
-    document
-        .getElementById("quizScreen")
-        .classList.add("hidden");
+    document.getElementById("quizScreen")
+        .style.display = "none";
 
-    document
-        .getElementById("resultScreen")
-        .classList.remove("hidden");
+    document.getElementById("resultScreen")
+        .style.display = "block";
 
-    document.getElementById("resultName").textContent =
-        `${firstName} ${lastName}`;
-
-    document.getElementById("score").textContent =
+    document.getElementById("finalScore")
+        .textContent =
         `${score} / ${questions.length}`;
 
 
-    const saveStatus =
+    let message = "";
+
+    if (score === 25) {
+        message = "Perfekcyjnie! 🇫🇷🏆 Znasz Francję świetnie!";
+    }
+    else if (score >= 20) {
+        message = "Świetny wynik! Bardzo dobrze znasz Francję.";
+    }
+    else if (score >= 15) {
+        message = "Dobry wynik! Masz solidną wiedzę o Francji.";
+    }
+    else if (score >= 10) {
+        message = "Nieźle! Jeszcze trochę nauki i będzie świetnie.";
+    }
+    else {
+        message = "Spróbuj ponownie i popraw swój wynik!";
+    }
+
+    document.getElementById("resultMessage")
+        .textContent = message;
+
+
+    saveResult();
+}
+
+
+/* =========================
+   SAVE TO GOOGLE SHEETS
+========================= */
+
+function saveResult() {
+
+    const status =
         document.getElementById("saveStatus");
 
-    saveStatus.textContent =
-        "Zapisywanie wyniku...";
+    status.textContent =
+        "⏳ Zapisywanie wyniku...";
 
 
-    /* Tworzymy dane do wysłania */
+    const data =
+        new URLSearchParams();
 
-    const formData = new URLSearchParams();
-
-    formData.append("firstName", firstName);
-    formData.append("lastName", lastName);
-    formData.append(
-        "score",
-        `${score} / ${questions.length}`
-    );
+    data.append("firstName", firstName);
+    data.append("lastName", lastName);
+    data.append("score", `${score}/${questions.length}`);
 
 
-    // Wysyłamy wszystkie 15 odpowiedzi
-    userAnswers.forEach((answer, index) => {
+    for (let i = 0; i < 25; i++) {
 
-        formData.append(
-            `q${index + 1}`,
-            answer || ""
+        data.append(
+            `q${i + 1}`,
+            userAnswers[i] || ""
         );
-
-    });
-
-
-    /* Wysyłamy dane do Google Apps Script */
-
-    try {
-
-        await fetch(SCRIPT_URL, {
-
-            method: "POST",
-
-            mode: "no-cors",
-
-            headers: {
-                "Content-Type":
-                    "application/x-www-form-urlencoded;charset=UTF-8"
-            },
-
-            body: formData
-
-        });
-
-        saveStatus.textContent =
-            "✅ Wynik został zapisany!";
-
-    } catch (error) {
-
-        console.error(error);
-
-        saveStatus.textContent =
-            "❌ Nie udało się zapisać wyniku.";
 
     }
 
+
+    fetch(SCRIPT_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+            "Content-Type":
+                "application/x-www-form-urlencoded"
+        },
+
+        body: data.toString()
+
+    })
+    .then(() => {
+
+        status.textContent =
+            "✅ Wynik został zapisany!";
+
+    })
+    .catch(() => {
+
+        status.textContent =
+            "⚠️ Nie udało się potwierdzić zapisu.";
+
+    });
+}
+
+
+/* =========================
+   RESTART
+========================= */
+
+function restartQuiz() {
+
+    document.getElementById("resultScreen")
+        .style.display = "none";
+
+    document.getElementById("startScreen")
+        .style.display = "block";
+
+    document.getElementById("firstName")
+        .value = "";
+
+    document.getElementById("lastName")
+        .value = "";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 </script>
 
 </body>
 </html>
-```
